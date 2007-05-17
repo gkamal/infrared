@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *
+ * Copyright 2005 Tavant Technologies and Contributors
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ *
+ *
+ * Original Author:  binil.thomas (Tavant Technologies)
+ * Contributor(s):   -;
+ *
+-->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="false">
+    <appender name="NOOP" class="net.sf.infrared.org.apache.log4j.varia.NullAppender">
+    </appender>
+    
+    <appender name="CONSOLE" class="net.sf.infrared.org.apache.log4j.ConsoleAppender">
+        <layout class="net.sf.infrared.org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[InfraRED] -- %m%n"/>
+        </layout>
+    </appender>
+
+    <category name="net.sf.infrared.agent" additivity="false">
+        <priority value="FATAL"/>
+        <appender-ref ref="CONSOLE"/>
+    </category>
+    
+    <category name="net.sf.infrared.base" additivity="false">
+        <priority value="FATAL"/>
+        <appender-ref ref="CONSOLE"/>
+    </category>
+    
+    <category name="net.sf.infrared.aspects" additivity="false">
+        <priority value="FATAL"/>
+        <appender-ref ref="CONSOLE"/>
+    </category>
+
+	<category name="net.sf.infrared.jboss" additivity="false">
+        <priority value="FATAL"/>
+        <appender-ref ref="CONSOLE"/>
+    </category>
+	
+	<category name="net.sf.infrared.weblogic" additivity="false">
+        <priority value="FATAL"/>
+        <appender-ref ref="CONSOLE"/>
+    </category>
+	
+    <root>
+        <priority value="FATAL"/>
+        <appender-ref ref="NOOP"/>
+    </root>
+</log4j:configuration>   

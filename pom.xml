@@ -1,0 +1,308 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.sf.infrared</groupId>
+    <artifactId>infrared-parent</artifactId>
+    <version>2.6-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>base</module>
+    </modules>
+
+    <name>InfraRED</name>
+    <description>InfraRED: J2EE Performance Monitoring Tool</description>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>manual</distribution>
+        </license>
+    </licenses>
+    <inceptionYear>2005</inceptionYear>
+    <organization>
+        <name>Tavant Technologies Pvt. Ltd.</name>
+    </organization>
+    <url>http://infrared.sourceforge.net/</url>
+
+    <developers>
+        <developer>
+            <name>Srinivas Narayanan</name>
+            <id>srinivasn</id>
+            <email>srinivas DOT narayanan AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Member</role>
+            </roles>
+            <timezone>+5.30</timezone>
+        </developer>
+        <developer>
+            <name>Kamal Govindraj</name>
+            <id>kamal_gs</id>
+            <email>kamal DOT govindraj AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Member</role>
+            </roles>
+            <timezone>+5.30</timezone>
+        </developer>
+        <developer>
+            <name>Binil Thomas</name>
+            <id>binil</id>
+            <email>binil DOT thomas AT gmail DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Member</role>
+            </roles>
+            <timezone>+5.30</timezone>
+        </developer>
+        <developer>
+            <name>Subin P</name>
+            <id>subin_p</id>
+            <email>subin DOT peeru AT gmail DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Member</role>
+            </roles>
+            <timezone>+5.30</timezone>
+        </developer>
+        <developer>
+            <name>Prashant Nair</name>
+            <id>prashantn</id>
+            <email>prashant DOT nair AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Member</role>
+            </roles>
+            <timezone>+5.30</timezone>
+        </developer>
+        <developer>
+            <name>Sandeep Dasgupta</name>
+            <id>-</id>
+            <email>sandeep DOT dasgupta AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Manager</role>
+            </roles>
+            <timezone>+5.30</timezone>
+        </developer>
+        <developer>
+            <name>Chetan Mehrotra</name>
+            <id>chetan_oct</id>
+            <email>chetan DOT mehrotra AT gmail DOT com</email>
+            <organization>Adobe India</organization>
+            <roles>
+                <role>Member</role>
+            </roles>
+            <timezone>+5.30</timezone>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>Vishal Saxena</name>
+            <email>vishal DOT saxena AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>
+                    Developed the initial version of an AspectJ-based performance monitoring tool in Tavant, which later
+                    evolved into InfraRED
+                </role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Manoj Acharya</name>
+            <email>manoj DOT acharya AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>
+                    Developed the initial version of an AspectJ-based performance monitoring tool in Tavant, which later
+                    evolved into InfraRED
+                </role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Nandakumar Devi</name>
+            <email>nandakumar DOT devi AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Developed a user-interface around the tool creted by Vishal and Manoj</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Roopali Agrawal</name>
+            <email>roopali DOT agrawal AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Developed the first version of InfraRED</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Kaushal Kumar</name>
+            <email>kaushal DOT kumar AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Developed the InfraRED Ant task</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Shivani Kansal</name>
+            <email>shivani DOT kansal AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Moved the project to SourceForge</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Ajith Kumar</name>
+            <email>ajith DOT kumar AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Designed the logo and website for InfraRED</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Archana B S</name>
+            <email>archana DOT bs AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Wrote initial versions of the documentation</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Vikas Agrawal</name>
+            <email>vikas DOT agrawal AT tavant DOT com</email>
+            <organization>Tavant Technologies Inc.</organization>
+            <roles>
+                <role>Manager for the project while it was developed internally in Tavant</role>
+            </roles>
+        </contributor>
+    </contributors>
+
+    <issueManagement>
+        <system>Sourceforge</system>
+        <url>https://sourceforge.net/tracker/?group_id=92904</url>
+    </issueManagement>
+    <scm>
+        <connection>scm:svn:https://infrared.svn.sourceforge.net/svnroot/infrared/infrared2/app/trunk/</connection>
+        <developerConnection>
+            scm:svn:https://infrared.svn.sourceforge.net/svnroot/infrared/infrared2/app/trunk/
+        </developerConnection>
+        <url>http://infrared.svn.sourceforge.net/viewvc/infrared/infrared2/app/trunk/</url>
+    </scm>
+    <mailingLists>
+        <mailingList>
+            <name>Infrared Developer List</name>
+            <subscribe>https://lists.sourceforge.net/lists/listinfo/infrared-developers</subscribe>
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=infrared-developers</archive>
+        </mailingList>
+        <mailingList>
+            <name>Infrared users forum</name>
+            <archive>http://sourceforge.net/forum/forum.php?forum_id=321138</archive>
+        </mailingList>
+    </mailingLists>
+
+    <dependencies>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>1.0</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.4</source>
+                    <target>1.4</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                    <excludes>
+                        <exclude>**/TestAll.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.3</version>
+            </plugin>
+            <plugin>
+                <!-- Produces a cross-reference of the project's sources -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <configLocation>./etc/infrared-checks.xml</configLocation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <links>
+                        <link>http://java.sun.com/j2se/1.5.0/docs/api</link>
+                        <link>http://jakarta.apache.org/commons/logging/api/</link>
+                        <link>http://www.junit.org/junit/javadoc/</link>
+                        <link>http://logging.apache.org/log4j/docs/api/</link>
+                        <link>http://www.springframework.org/docs/api/</link>
+                        <link>http://jakarta.apache.org/commons/lang/api/</link>
+                        <link>http://jakarta.apache.org/commons/collections/api/</link>
+                        <link>http://tomcat.apache.org/tomcat-5.0-doc/servletapi/</link>
+                    </links>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- Generates a report on various tags found in the code, like @todo or //TODO tags. -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>taglist-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <configuration>
+                    <threshold>Normal</threshold>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
