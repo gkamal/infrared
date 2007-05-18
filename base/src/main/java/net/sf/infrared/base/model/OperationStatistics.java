@@ -72,40 +72,10 @@ public class OperationStatistics extends AbstractStatistics {
     }
     
     public void setLayerTimes(Map layerTimes) {
-//        if (this.layers != null) {
-//            throw new IllegalStateException("layer times are already set; can't set it again");
-//        }
-//        
-//        if (this.executions != null) {
-//            Set layerNamesAsPerLayersMap = layerTimes.keySet();
-//            Set layerNamesAsPerExecutionsMap = this.executions.keySet();
-//            
-//            if (! layerNamesAsPerLayersMap.equals( layerNamesAsPerExecutionsMap )) {
-//                throw new IllegalArgumentException("execution timings set earlier has a" +
-//                        " different set of layers[" + layerNamesAsPerExecutionsMap + "]" +
-//                        " which does not match the layers of this layer timings " +
-//                        "[" + layerNamesAsPerLayersMap + "]");
-//            }
-//        }
         this.layers = layerTimes;
     }
     
     public void setExecutionTimes(Map executionTimes) {
-//        if (this.executions != null) {
-//            throw new IllegalStateException("execution times are already set; can't set again");
-//        }
-//        
-//        if (this.layers != null) {
-//            Set layerNamesAsPerLayersMap = this.layers.keySet();
-//            Set layerNamesAsPerExecutionsMap = executionTimes.keySet();
-//            
-//            if (! layerNamesAsPerLayersMap.equals( layerNamesAsPerExecutionsMap )) {
-//                throw new IllegalArgumentException("layer timings set earlier has a different" +
-//                        " set of layers[" + layerNamesAsPerLayersMap + "] which does not match" +
-//                        " the layers of this execution timings " +
-//                        "[" + layerNamesAsPerExecutionsMap + "]");
-//            }
-//        }
         this.executions = executionTimes;
     }
     

@@ -66,20 +66,7 @@ public class StatisticsSnapshot implements Serializable, Cloneable {
     private long endTime = Long.MIN_VALUE;
     
     
-//    public Object clone() {
-//        StatisticsSnapshot clone = new StatisticsSnapshot();
-//        clone.applicationNames = new HashSet(this.applicationNames);
-//        clone.repository = (LayerTimeRepository) this.repository.clone();
-//        clone.tree = this.tree; // shallow
-//        clone.hasStatistics = this.hasStatistics;
-//        clone.maxLastInvocations = this.maxLastInvocations;
-//        clone.lastInvocationsList = new LinkedList(this.lastInvocationsList);
-//        clone.startTime = this.startTime;
-//        clone.endTime = this.endTime;
-//        return clone;
-//    }
-       
-    public synchronized void merge(ApplicationStatistics stats) {
+   public synchronized void merge(ApplicationStatistics stats) {
         if (stats == null) {
             return;
         }
@@ -139,31 +126,10 @@ public class StatisticsSnapshot implements Serializable, Cloneable {
     public AggregateExecutionTime[] getExecutionsInAbsoluteLayer(String aLayer) {
         return repository.getExecutionsInAbsoluteLayer(aLayer);
     }
-//    
-//    /**
-//     * Gets the layers that executed in this application
-//     */
-//    public String[] getLayers() {
-//        throw new UnsupportedOperationException("Names have been changed");
-//    }
-//    
-//    /**
-//     * Gets the time spend in a layer
-//     */
-//    public long getTimeInLayer(String layer) {
-//        throw new UnsupportedOperationException();
-//    }
-    
+   
     public Set getApplicationNames() {
         return Collections.unmodifiableSet(applicationNames);
     }
-    
-//    /**
-//     * Gets the aggregate of executions in that happenend in a given layer
-//     */
-//    public AggregateExecutionTime[] getExecutionsInLayer(String layer) {
-//        return repository.getExecutionsInHierarchicalLayer(layer);
-//    }
     
     public static StatisticsSnapshot createSnapshot(Collection appNames, 
             Collection instanceIds, Map layerTimes, Map executionTimes, AggregateOperationTree tree, 
