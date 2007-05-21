@@ -9,6 +9,7 @@
 
     <modules>
         <module>base</module>
+        <module>agent</module>
     </modules>
 
     <name>InfraRED</name>
@@ -238,6 +239,8 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
+                    <!-- Need to be set to false once things
+                      stablized-->
                     <skip>true</skip>
                     <excludes>
                         <exclude>**/TestAll.java</exclude>
