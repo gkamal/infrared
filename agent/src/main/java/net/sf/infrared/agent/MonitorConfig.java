@@ -43,18 +43,6 @@ public interface MonitorConfig {
 
     void enableCallTracing(boolean enable);
 
-    // boolean isJDBCMonitoringEnabled();
-    // void enableJDBCMonitoring(boolean enable);
-    //
-    // boolean isJDBCFecthStatisticsCollectionEnabled();
-    // void enableJDBCFecthStatisticsCollection(boolean enable);
-    //
-    // boolean isJDBCResourceLeakDetectionEnabled();
-    // void enableJDBCResourceLeakDetectionEnabled(boolean enable);
-    //
-    // boolean isJDBCTrackResourceAquisitionLocationEnabled();
-    // void enableJDBCTrackResourceAquisitionLocationEnabled(boolean enable);
-
     long getPruneThreshold();
 
     void setPruneThreshold(long pruneThreshold);
@@ -63,19 +51,7 @@ public interface MonitorConfig {
 
     void setNoOfLastInvocationsToBeTracked(int noOfLastInvocationsToBeTracked);
 
-    // dev specific parameters
-    // boolean isDefensiveChecksEnabled();
-    // void setDefensiveChecksEnabled(boolean enable);
-    // boolean isDebugLoggingEnabled();
-
     String getCollectionStrategy();
-
-    // String getMBeanServerProvider();
-
-    // String getUrlIgnoreList();
-    // void setUrlIgnoreList(String urlIgnoreList);
-    //    
-    // String[] getSplitUrlIgnoreList();
 
     /**
      * Retrieve the value for given parameter name This method is make it easier
@@ -100,5 +76,4 @@ public interface MonitorConfig {
 
     void setProperty(String propertyName, boolean value);
     
-    // void setIsCallFromInfraredPropertiesMBean(boolean value);
 }
