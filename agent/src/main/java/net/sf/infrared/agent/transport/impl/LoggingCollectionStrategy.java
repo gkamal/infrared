@@ -60,12 +60,11 @@ public class LoggingCollectionStrategy implements CollectionStrategy {
     }
 
     public void suspend() {
-
+    	//ignore
     }
 
     public void resume() {
-        // TODO Auto-generated method stub
-
+    	//ignore
     }
 
     public boolean destroy() {

@@ -7,27 +7,25 @@ import net.sf.infrared.base.model.OperationStatistics;
 public class DoNothingCollectionStrategy implements CollectionStrategy {
 
     public boolean init(MonitorConfig configuration) {
-        // TODO Auto-generated method stub
+        // ignore
         return true;
     }
 
     public boolean collect(OperationStatistics stats) {
-        // TODO Auto-generated method stub
+        // ignore
         return true;
     }
 
     public void suspend() {
-        // TODO Auto-generated method stub
-
+        // ignore
     }
 
     public void resume() {
-        // TODO Auto-generated method stub
-
+        // ignore
     }
 
     public boolean destroy() {
-        // TODO Auto-generated method stub
+        // ignore
         return true;
     }
 
