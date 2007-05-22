@@ -49,7 +49,6 @@ public class InfraredProperties implements InfraredPropertiesMBean {
     }
 
     public boolean getMonitoring() {
-    	// config.setIsCallFromInfraredPropertiesMBean(true);
     	return config.isMonitoringEnabled();
     }
 
@@ -58,7 +57,6 @@ public class InfraredProperties implements InfraredPropertiesMBean {
     }
 
     public boolean getCallTraceProfiling() {
-    	// config.setIsCallFromInfraredPropertiesMBean(true);
     	return config.isCallTracingEnabled();
     }
 
@@ -67,7 +65,6 @@ public class InfraredProperties implements InfraredPropertiesMBean {
     }
 
     public boolean getJdbcMonitoringEnabled() {
-    	// config.setIsCallFromInfraredPropertiesMBean(true);
     	return config.getProperty(KEY_JDBC_MONITORING_ENABLED, true);
     }
 
@@ -76,7 +73,6 @@ public class InfraredProperties implements InfraredPropertiesMBean {
     }
 
     public boolean getCollectFetchDataEnabled() {
-    	// config.setIsCallFromInfraredPropertiesMBean(true);
     	return config.getProperty(KEY_JDBC_FETCH_STATISTICS_ENABLE, true);
     }
 
@@ -85,16 +81,6 @@ public class InfraredProperties implements InfraredPropertiesMBean {
     }
 
     public long getPruneBelowTime() {
-    	// config.setIsCallFromInfraredPropertiesMBean(true);
     	return config.getPruneThreshold();
     }
-
-    // public String getUrlIgnoreList() {
-    // // return config.getUrlIgnoreList();
-    // return "";
-    // }
-    //
-    // public void setUrlIgnoreList(String urlIgnoreList) {
-    // // config.setUrlIgnoreList(urlIgnoreList);
-    // }
 }

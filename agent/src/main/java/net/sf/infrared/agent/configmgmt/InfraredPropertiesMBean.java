@@ -48,6 +48,4 @@ public interface InfraredPropertiesMBean {
 
     public long getPruneBelowTime();
 
-    // public String getUrlIgnoreList();
-    // public void setUrlIgnoreList(String urlIgnoreList);
 }
