@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+ *
+ * Copyright 2005 Tavant Technologies and Contributors
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ *
+ *
+ * Original Author:  binil.thomas (Tavant Technologies)
+ * Contributor(s):   subin.p;
+ *
+-->
+
+<beans>
+	<bean id="baseTxProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="target">
+			<ref bean="infraredDao" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED, -Exception</prop>
+			</props>
+		</property>
+	</bean>
+
+
+
+<!-- In case of any major changes to the infraredDao bean the testInfraredDao bean definition  
+	 also needs to be updated for effective testing -->
+	<bean id="infraredDao" parent="baseTxProxy">
+		<property name="target">
+			<bean
+				class="net.sf.infrared.collector.impl.persistence.ApplicationStatisticsDaoImpl">
+				<constructor-arg><ref local="dataSource" /></constructor-arg>
+				<!--property name="dataSource">
+					<ref local="dataSource" />
+				</property-->
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<list>
+				<value>net.sf.infrared.collector.ApplicationStatisticsDao</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref local="dataSource"/>
+		</property>
+	</bean>
+
+	<bean id="inProcessDataSource"
+		class="net.sf.infrared.collector.impl.persistence.InProcessDataSource">	
+		<!--property name="dbPath"><value>foo</value></property-->
+	</bean>	
+	
+	<!--bean id="dataSourceTarget" class="org.springframework.jndi.JndiObjectFactoryBean"-->
+	<bean id="dataSource" class="net.sf.infrared.collector.impl.persistence.CollectorDataSource">
+        <property name="jndiName">
+            <value>IRED_DATASOURCE</value>
+        </property>
+		<property name="defaultDataSource">
+            <ref local="inProcessDataSource"/>
+        </property>      
+    </bean>
+		
+
+
+
+<!-- Starting the bean definition for a test data source. In case of any major changes to the  
+     infraredDao bean the same needs to be reflected in this been as well for effective testing.-->
+	<bean id="testInfraredDao" parent="baseTxProxy">
+		<property name="target">
+			<bean
+				class="net.sf.infrared.collector.impl.persistence.ApplicationStatisticsDaoImpl">
+				<constructor-arg><ref local="testInProcessDataSource" /></constructor-arg>
+			</bean>	
+		</property>
+	</bean>
+	
+	
+	<!--bean id="testDataSource" class="net.sf.infrared.collector.impl.persistence.CollectorDataSource">
+        <property name="jndiName">
+            <value>IRED_DATASOURCE</value>
+        </property>
+		<property name="defaultDataSource">
+            <ref local="testInProcessDataSource"/>
+        </property>      
+    </bean-->	
+    
+	<bean id="testInProcessDataSource"
+		class="net.sf.infrared.collector.impl.persistence.InProcessDataSource">	
+		<property name="dbPath"><value>testDB</value></property>
+		<!--property name="dbPath"><value>System.getProperty("java.io.tmpdir")/testDB</value></property-->				
+	</bean>	    
+    
+<!-- Ending the bean definition for the test data source-->
+
+
+	<!--bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"><value>oracle.jdbc.driver.OracleDriver</value></property>
+		<property name="url"><value>jdbc:oracle:thin:@192.168.135.89:1521:INFPRF</value></property>
+		<property name="username"><value>infra_persist</value></property>
+		<property name="password"><value>persistence</value></property>
+	</bean-->
+	
+</beans>
