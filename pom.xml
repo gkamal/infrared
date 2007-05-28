@@ -10,6 +10,8 @@
     <modules>
         <module>base</module>
         <module>agent</module>
+        <module>aspects</module>
+        <module>collector</module>
     </modules>
 
     <name>InfraRED</name>
@@ -308,4 +310,8 @@
             </plugin>
         </plugins>
     </reporting>
+
+    <properties>
+		<spring-version>1.2.8</spring-version>
+    </properties>
 </project>
