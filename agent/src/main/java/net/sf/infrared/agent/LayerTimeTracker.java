@@ -21,18 +21,16 @@
  */
 package net.sf.infrared.agent;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import org.apache.log4j.Logger;
 
 import net.sf.infrared.agent.util.MutableInteger;
 import net.sf.infrared.base.model.ExecutionTimer;
 import net.sf.infrared.base.model.LayerTime;
 import net.sf.infrared.base.util.LoggingFactory;
+
+import org.apache.log4j.Logger;
 
 /**
  * 
