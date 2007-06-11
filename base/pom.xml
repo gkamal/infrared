@@ -9,8 +9,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <name>base</name>
     <groupId>net.sf.infrared</groupId>
-    <artifactId>infrared-base</artifactId>
+    <artifactId>infrared-base</artifactId>    
     <version>2.6-SNAPSHOT</version>
 
     <dependencies>

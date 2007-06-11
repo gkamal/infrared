@@ -9,6 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <name>agent</name>
     <groupId>net.sf.infrared</groupId>
     <artifactId>infrared-agent</artifactId>
     <version>2.6-SNAPSHOT</version>
