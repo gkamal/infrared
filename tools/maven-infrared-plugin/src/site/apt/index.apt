@@ -1,0 +1,36 @@
+	------
+	Introduction
+	------
+	Chetan Mehrotra
+	------
+	21 June 2007
+	------
+
+~~ NOTE: For help with the syntax of this file, see:
+~~ http://maven.apache.org/guides/mini/guide-apt-format.html
+
+
+Infrared integration Plugin
+
+  This plugin is used to perform operations required for integration with Infrared profiling tool.
+  
+  The plugin would modify the given archive type (war,ear)  as required for infrared. The modified application would
+  be present (bydefault) under target/output-infrared directory.
+
+* Goals Overview
+
+  General Information about the goals.
+
+  * {{{integrate-mojo.html}infrared:integrate}} Plugin to modify the archive as required for Infrared
+
+* Usage
+
+  Instructions on how to use the Plugin can be found {{{usage.html}here}}.
+
+* Examples
+
+  To provide you with better understanding on some usages of the Plugin,
+  you can take a look into the following examples:
+
+  * {{{examples/minimal-maven.html}Using plugin which do not use Maven}}
+ 

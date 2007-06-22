@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	<display-name>LoanDemo</display-name>
+    <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/classes/spring-web-context.xml
+			/WEB-INF/classes/websecurity/spring-security-web-context.xml
+		</param-value>
+	</context-param>
+
+    <!--  load a shared service layer parent application context -->
+	<context-param>
+		<param-name>locatorFactorySelector</param-name>
+		<param-value>beanRefContext.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>parentContextKey</param-name>
+		<param-value>application-context</param-value>
+	</context-param>
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>ApplicationResources</param-value>
+    </context-param>
+
+	<filter>
+        <filter-name>Acegi Filter Chain Proxy</filter-name>
+        <filter-class>org.acegisecurity.util.FilterToBeanProxy</filter-class>
+        <init-param>
+            <param-name>targetClass</param-name>
+            <param-value>org.acegisecurity.util.FilterChainProxy</param-value>
+        </init-param>
+    </filter>
+
+<!--This filter is required for trimming of request parameters -->
+     <filter>
+	    <filter-name>TrimFilter</filter-name>
+	     <filter-class>com.tavant.homer.common.web.filter.TrimStringFilter</filter-class>
+	  </filter>
+
+<!-- Pushes the NDC context thus allowing logs to be filtered by ip addresses -->
+	  <filter>
+	    <filter-name>Log4jFilter</filter-name>
+	    <filter-class>com.tavant.homer.common.web.filter.Log4jNDCFilter</filter-class>
+	  </filter>
+
+	  <filter-mapping>
+	        <filter-name>Acegi Filter Chain Proxy</filter-name>
+	        <url-pattern>/*</url-pattern>
+	  </filter-mapping>  
+
+	  <filter-mapping>
+	    <filter-name>TrimFilter</filter-name>
+	    <url-pattern>*.do</url-pattern>
+	  </filter-mapping>
+
+	  <filter-mapping>
+	    <filter-name>Log4jFilter</filter-name>
+	    <url-pattern>*.do</url-pattern>
+	  </filter-mapping>
+
+
+    <listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+ 	<listener>
+ 		<!-- Cleans up the java bean cache thus preventing memory leaks -->
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>org.acegisecurity.ui.session.HttpSessionEventPublisher</listener-class>
+	</listener>
+	
+
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>
+                /WEB-INF/strutsconfig/struts-common-config.xml,
+                /WEB-INF/strutsconfig/struts-loan-config.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>1</param-value>
+        </init-param>
+         <init-param>
+            <param-name>detail</param-name>
+            <param-value>0</param-value>
+        </init-param>
+    </servlet>
+
+
+
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>/content/jsp/index.jsp</welcome-file>
+    </welcome-file-list>
+    
+    <error-page>
+        <error-code>500</error-code>
+        <location>/content/jsp/common/error.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/content/jsp/common/error.jsp</location>
+    </error-page>
+
+
+
+ <taglib>
+    <taglib-uri>/WEB-INF/c.tld</taglib-uri>
+    <taglib-location>/WEB-INF/tlds/c.tld</taglib-location>
+  </taglib>
+ <taglib>
+    <taglib-uri>/WEB-INF/fmt.tld</taglib-uri>
+    <taglib-location>/WEB-INF/tlds/fmt.tld</taglib-location>
+  </taglib>
+ <taglib>
+    <taglib-uri>/WEB-INF/x.tld</taglib-uri>
+    <taglib-location>/WEB-INF/tlds/x.tld</taglib-location>
+  </taglib>
+
+
+
+ <taglib>
+    <taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+    <taglib-location>/WEB-INF/tlds/struts-bean.tld</taglib-location>
+  </taglib>
+  <taglib>
+      <taglib-uri>/WEB-INF/struts-bean-el.tld</taglib-uri>
+      <taglib-location>/WEB-INF/tlds/struts-bean-el.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+    <taglib-location>/WEB-INF/tlds/struts-html.tld</taglib-location>
+  </taglib>
+  <taglib>
+      <taglib-uri>/WEB-INF/struts-html-el.tld</taglib-uri>
+      <taglib-location>/WEB-INF/tlds/struts-html-el.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+    <taglib-location>/WEB-INF/tlds/struts-logic.tld</taglib-location>
+  </taglib>
+   <taglib>
+      <taglib-uri>/WEB-INF/struts-logic-el.tld</taglib-uri>
+      <taglib-location>/WEB-INF/tlds/struts-logic-el.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+	  <taglib-uri>/WEB-INF/struts-nested.tld</taglib-uri>
+	  <taglib-location>/WEB-INF/tlds/struts-nested.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/WEB-INF/homer.tld</taglib-uri>
+    <taglib-location>/WEB-INF/tlds/homer.tld</taglib-location>
+  </taglib>
+
+</web-app>

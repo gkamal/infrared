@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<faqs id="FAQ" title="Frequently Asked Questions">
+  <part id="General">
+    <faq id="infraredConfiguration">
+      <question>Where do I put Infrared related configuration</question>
+      <answer>
+        <p>
+          All infrared related configuration should be put in <i>${basedir}/src/main/infrared</i>. This location can be
+          configured <a href="./integrate-mojo.html#infraredConfDir">infraredConfDir</a> attribute of integrate goal
+        </p>
+         <source>
+yourproject
+  |-- src
+    |-- main
+      |-- java
+        |-- org
+          |...
+            `-- MyClass.java
+      |-- infrared
+        |-- aop.xml
+        |-- infrared-agent.properties
+          ...
+        </source>
+      </answer>
+    </faq>
+    
+    <faq id="commandLine">
+      <question>Can I shorten the command line?</question>
+      <answer>
+       <p>Add the following to your ${user.home}/.m2/settings.xml file: </p>
+	   <source>
+<pluginGroups>
+   <pluginGroup>net.sf.infrared</pluginGroup>
+</pluginGroups>
+		</source>
+		<p>After that you have to just execute </p>
+		<source>
+mvn infrared:integrate		
+		</source>
+      </answer>
+    </faq>
+    
+    <faq id="withoutMaven">
+      <question>Can I use the plugin in projects which do not use Maven?</question>
+      <answer>
+       <p>The plugin can be used in those cases also where projects do not use Maven. Refer to the following
+        <a href="./examples/mimimal-maven.html">example</a> </p>
+      </answer>
+    </faq>
+  </part>
+</faqs>
+

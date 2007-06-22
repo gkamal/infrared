@@ -1,0 +1,43 @@
+	------
+	Usage
+	------
+	Chetan Mehrotra
+	------
+	21 June 2007
+	------
+	
+Usage
+ 
+ The following examples describe the basic usage of the Plugin.
+ 
+ * To modify the apllication for interation with Infrared you can directly run the command
+ 
++-----+
+mvn net.sf.infrared:maven-infrared-plugin:integrate
++-----+ 
+
+ It would use the default configuration for your project. The modified application would be present
+ under <project dir>/target/output-infrared
+ 
+ *If some properties are to be modified then have following entry in your pom.xml
+ 
++-----+
+ <build>
+   <plugins>
+       ...
+       <plugin>
+        <plugin>
+            <groupId>net.sf.infrared</groupId>
+            <artifactId>maven-infrared-plugin</artifactId>
+            <configuration>
+                <application>${project.build.directory}/${project.build.finalName}.war</application>
+            </configuration>
+        </plugin>
+      ...
+      </plugins>
+  </build> 
++-----+
+ 
+ Here we specify the application. By default if the packaging for the pom.xml is set to war the plugin 
+ modifies the exploded war. To integrate zipped war specify the file name here.
+ 

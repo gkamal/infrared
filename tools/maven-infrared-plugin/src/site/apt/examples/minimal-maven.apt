@@ -1,0 +1,60 @@
+	------
+	Usage
+	------
+	Chetan Mehrotra
+	------
+	21 June 2007
+	------
+
+Using in projects without Maven
+
+	The Infrared maven plugin can also be used to integrate archives (war,ear) in those cases which do not use maven.
+	This can be particularly useful in those cases where you have a pre created war/ear without the sources. For that you
+	need to set a minimal maven project to get the plugin working
+	It requires following steps
+
+ * Install Maven 2.0 on the system
+ 
+ * Have a following directory structure. Here we are going to integrate Infrared with petclinic-0.3.war
+
++-------+
+yourproject
+      |-- infrared
+        |-- aop.xml
+        |-- infrared-agent.properties 	
+      |-- petclinic-0.3.war
+      |-- pom.xml
++-------+
+
+ *	Have following entries in the pom.xml
+  
++-------+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>example</groupId>
+    <artifactId>project</artifactId>
+    <version>1.0</version>
+    <build>
+    	<plugins>
+            <plugin>
+                <groupId>net.sf.infrared</groupId>
+                <artifactId>maven-infrared-plugin</artifactId>
+                <configuration>
+                    <application>petclinic-0.3.war</application>
+                    <outputDir>output-infrared</outputDir>
+                    <workDir>work-infrared</workDir>
+                    <infraredConfDir>infrared</infraredConfDir>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
++-------+  
+
+ * Now run the command. The modified war would be present in the <<<output-infrared>>> directory
+  
+---
+mvn net.sf.infrared:maven-infrared-plugin:integrate
+---  
