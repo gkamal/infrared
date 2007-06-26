@@ -1,6 +1,6 @@
-/* 
+/*
  * Copyright 2005 Tavant Technologies and Contributors
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  *
  *
  * Original Author:  kamal.govindraj (Tavant Technologies)
@@ -24,8 +24,8 @@ package net.sf.infrared.agent.transport.impl;
 import junit.framework.TestCase;
 import junit.textui.TestRunner;
 
+import org.easymock.ArgumentsMatcher;
 import org.easymock.MockControl;
-import org.easymock.ParameterMatcher;
 
 import net.sf.infrared.agent.transport.Forwarder;
 import net.sf.infrared.base.model.ApplicationStatistics;
@@ -44,13 +44,13 @@ public class BufferedAggregatorTest extends TestCase {
     }
 
     public void testAggregateAndFlush() {
-        ApplicationStatistics testAppStatistics = 
+        ApplicationStatistics testAppStatistics =
                 new ApplicationStatistics("testApplication", "testHost");
-        
+
         MockControl forwarderControl = MockControl.createStrictControl(Forwarder.class);
         Forwarder mockForwarder = (Forwarder) forwarderControl.getMock();
         mockForwarder.forward(testAppStatistics);
-        forwarderControl.setMatcher(new ParameterMatcher() {
+        forwarderControl.setMatcher(new ArgumentsMatcher() {
             public boolean matches(Object[] expected, Object[] actual) {
                 assertEquals(expected.length, actual.length);
                 assertTrue(expected.length == 1);
@@ -80,11 +80,11 @@ public class BufferedAggregatorTest extends TestCase {
 
         BufferedAggregator aggregator = new BufferedAggregator();
         aggregator.setForwarder(mockForwarder);
-        
-        OperationStatistics testOpStatistics = 
-                new OperationStatistics("testApplication", "testHost");        
+
+        OperationStatistics testOpStatistics =
+                new OperationStatistics("testApplication", "testHost");
         aggregator.aggregate(testOpStatistics);
-        
+
         aggregator.flush();
         forwarderControl.verify();
     }
@@ -106,13 +106,13 @@ public class BufferedAggregatorTest extends TestCase {
     }
 
     public void testNoAggregateBetweenFlushes() {
-        ApplicationStatistics testAppStatistics = 
+        ApplicationStatistics testAppStatistics =
                 new ApplicationStatistics("testApplication", "testHost");
-         
+
         MockControl forwarderControl = MockControl.createStrictControl(Forwarder.class);
         Forwarder mockForwarder = (Forwarder) forwarderControl.getMock();
         mockForwarder.forward(testAppStatistics);
-        forwarderControl.setMatcher(new ParameterMatcher() {
+        forwarderControl.setMatcher(new ArgumentsMatcher() {
             public boolean matches(Object[] expected, Object[] actual) {
                 assertEquals(expected.length, actual.length);
                 assertTrue(expected.length == 1);
@@ -142,11 +142,11 @@ public class BufferedAggregatorTest extends TestCase {
 
         BufferedAggregator aggregator = new BufferedAggregator();
         aggregator.setForwarder(mockForwarder);
-        
-        OperationStatistics testOpStatistics = 
+
+        OperationStatistics testOpStatistics =
                 new OperationStatistics("testApplication", "testHost");
         aggregator.aggregate(testOpStatistics);
-        
+
         aggregator.flush();
         aggregator.flush();
         forwarderControl.verify();
