@@ -1,6 +1,6 @@
-/* 
+/*
  * Copyright 2005 Tavant Technologies and Contributors
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,9 +12,9 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
  *
- * 
+ *
+ *
  * Original Author:  binil.thoms (Tavant Technologies)
  * Contributor(s):   prashant.nair, subin.p
  *
@@ -29,19 +29,19 @@ import org.apache.log4j.Logger;
 
 /**
  * Captures the aggregated timing information for a set of executions.
- * 
+ *
  * <p>
  * Each AggregateExecutionTime is created with an ExecutionContext - the
  * aggregated timing information represented will be of executions of that
  * context type. The ExecutionContext answers the question "what was executed?",
  * whereas this class answers the question "what is the timing information for
  * those executions?".
- * 
+ *
  * <p>
  * AggregateExecutionTime starts out empty when created; it gets more data as
  * other AggregateExecutionTimes and ExecutionTimers (representing one execution
  * of the context) gets merged onto it.
- * 
+ *
  * @author binil.thomas
  * @author prashant.nair
  */
@@ -75,7 +75,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     private long exclusiveFirstExecutionTime = -1;
 
     private long exclusiveLastExecutionTime = -1;
-    
+
     private String layerName;
 
     /**
@@ -89,25 +89,26 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
 
     /**
      * Merges another AggregateExecutionTime onto this one.
-     * 
+     *
      * <p>
      * The argument AggregateExecutionTime is left unchanged after this
      * operation. The target AggregateExecutionTime, after the merge operation,
      * will also represent the aggregated timing information of those of the
      * argument. For instance, the execution count will be the sum of the
      * original execution count and the execution count of the argument.
-     * 
+     *
      * <p>
      * Only AggregateExecutionTimes representing the same ExecutionContext can
      * be merged - 'same' here means that the two ExecutionContext objects must
-     * be equal as defined by their equals(Object) method. 
+     * be equal as defined by their equals(Object) method.
      */
     public void merge(AggregateExecutionTime aet) {
-        assert (getContext().equals(aet.getContext())) : 
+        //TODO: will this string concatenation happen always or only when asserts are enabled?
+        assert (getContext().equals(aet.getContext())) :
             "Illegal attempt to merge two AggregateExecutionTimes representing different" +
-            " contexts[ " + getContext() + ", " + aet.getContext() + " ]"; 
-            // will this string concatenation happen always or only when asserts are enabled?
-        
+            " contexts[ " + getContext() + ", " + aet.getContext() + " ]";
+
+
         synchronized (this) {
             mergeExecutionCount(aet);
             mergeInclusiveTime(aet);
@@ -117,9 +118,6 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
             if (getLayerName() == null) {
                 this.layerName = aet.getLayerName();
             }
-            assert (getLayerName().equals(aet.getLayerName())) :
-                "Illegal attempt to merge two AggregateExecutionTimes executed under two" +
-                " layers[ " + getLayerName() + ", " + aet.getLayerName() + " ]";
         }
 
         if (log.isDebugEnabled()) {
@@ -130,23 +128,23 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     /**
      * Adds the time of an execution to this one. The execution that is to be
      * merged is represented by an ExecutionTimer argument.
-     * 
+     *
      * <p>
      * The argument ExecutionTimer is left unchanged after this operation. The
      * target AggregateExecutionTime, after the merge operation, will also
      * represent the timing information from the argument ExecutionTimer. For
      * instance, the exeucion count will be incremented by one.
-     * 
+     *
      * <p>
      * Only ExecutionTimers representing the same ExecutionContext can be merged -
      * 'same' here means that the two ExecutionContext objects must be euqal as
-     * defined by their equals(Object) method. 
+     * defined by their equals(Object) method.
      */
     public void merge(ExecutionTimer et) {
-        assert (this.ctx.equals(et.getContext())) : 
+        assert (this.ctx.equals(et.getContext())) :
             "Illegal attempt to merge an ExecutionTime representing a different" +
-            " context[ " + et.getContext() + " ] than this one[ " + this.ctx + " ]"; 
-        
+            " context[ " + et.getContext() + " ] than this one[ " + this.ctx + " ]";
+
         long inc = et.getInclusiveTime();
         long exc = et.getExclusiveTime();
 
@@ -159,10 +157,6 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
             if (getLayerName() == null) {
                 setLayerName( et.getLayerName() );
             }
-            assert (getLayerName().equals(et.getLayerName())) :
-                "Illegal attempt to merge two AggregateExecutionTimes executed under two" +
-                " layers[ " + getLayerName() + ", " + et.getLayerName() + " ]";
-            
         }
 
         if (log.isDebugEnabled()) {
@@ -188,7 +182,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
 
     /**
      * Gets the ExecutionContext associated with this AggregateExecutionTime.
-     * 
+     *
      * <p>
      * The timing information contained in this AggregateExecutionTime pertains
      * to multiple executions of whatever is represented by the returned
@@ -200,7 +194,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
 
     /**
      * Gets the total number of times the ExecutionContext was executed.
-     * 
+     *
      * <p>
      * Returns 0 if this AggregateExecutionTime does not contain any timing
      * information yet.
@@ -212,7 +206,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     /**
      * Gets the system time the first (least recent) time the ExecutionContext
      * was executed.
-     * 
+     *
      * <p>
      * Returns -1 if this AggregateExecutionTime does not contain any timing
      * information yet.
@@ -224,7 +218,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     /**
      * Gets the inclusive time of the first (least recent) execution of the
      * ExecutionContext.
-     * 
+     *
      * <p>
      * Returns -1 if this AggregateExecutionTime does not contain any timing
      * information yet.
@@ -236,7 +230,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     /**
      * Gets the exclusive time of the first (least recent) execution of the
      * ExecutionContext.
-     * 
+     *
      * <p>
      * Returns -1 if this AggregateExecutionTime does not contain any timing
      * information yet.
@@ -248,7 +242,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     /**
      * Gets the system time the last (most recent) time the ExecutionContext was
      * executed.
-     * 
+     *
      * <p>
      * Returns -1 if this AggregateExecutionTime does not contain any timing
      * information yet.
@@ -260,7 +254,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     /**
      * Gets the inclusive time of the last (most recent) execution of the
      * ExecutionContext.
-     * 
+     *
      * <p>
      * Returns -1 if this AggregateExecutionTime does not contain any timing
      * information yet.
@@ -272,7 +266,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     /**
      * Gets the exclusive time of the last (most recent) execution of the
      * ExecutionContext.
-     * 
+     *
      * <p>
      * Returns -1 if this AggregateExecutionTime does not contain any timing
      * information yet.
@@ -283,7 +277,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
 
     /**
      * Gets the total inclusive time of all executions of the ExecutionContext.
-     * 
+     *
      * <p>
      * Returns 0 if this AggregateExecutionTime does not contain any timing
      * information yet.
@@ -294,7 +288,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
 
     /**
      * Gets the total exclusive time of all executions of the ExecutionContext.
-     * 
+     *
      * <p>
      * Returns 0 if this AggregateExecutionTime does not contain any timing
      * information yet.
@@ -306,7 +300,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     /**
      * Gets the maximum inclusive time taken of all executions of the
      * ExecutionContext.
-     * 
+     *
      * <p>
      * Returns Long.MIN_VALUE if this AggregateExecutionTime does not contain
      * any timing information yet.
@@ -318,7 +312,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     /**
      * Gets the minimum inclusive time taken of all executions of the
      * ExecutionContext.
-     * 
+     *
      * <p>
      * Returns Long.MAX_VALUE if this AggregateExecutionTime does not contain
      * any timing information yet.
@@ -330,7 +324,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     /**
      * Gets the maximum exclusive time taken of all executions of the
      * ExecutionContext.
-     * 
+     *
      * <p>
      * Returns Long.MIN_VALUE if this AggregateExecutionTime does not contain
      * any timing information yet.
@@ -342,7 +336,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     /**
      * Gets the minimum exclusive time taken of all executions of the
      * ExecutionContext.
-     * 
+     *
      * <p>
      * Returns Long.MAX_VALUE if this AggregateExecutionTime does not contain
      * any timing information yet.
@@ -350,12 +344,12 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     public long getMinExclusiveTime() {
         return minExclusiveTime;
     }
-    
+
     /**
      * Gets the average inclusive time of each execution of the ExecutionContext.
-     * 
+     *
      * <p>
-     * Returns 0 if this AggregateExecutionTime does not contain any 
+     * Returns 0 if this AggregateExecutionTime does not contain any
      * timing information yet.
      */
     public double getAverageInclusiveTime() {
@@ -367,9 +361,9 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
 
     /**
      * Gets the average exclusive time of each execution of the ExecutionContext.
-     * 
+     *
      * <p>
-     * Returns 0 if this AggregateExecutionTime does not contain any 
+     * Returns 0 if this AggregateExecutionTime does not contain any
      * timing information yet.
      */
     public double getAverageExclusiveTime() {
@@ -381,11 +375,11 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
 
     /**
      * Gets the adjusted average inclusive time of each execution of the ExecutionContext.
-     * Adjusted average inclusive time means the average inclusive time calculated after 
+     * Adjusted average inclusive time means the average inclusive time calculated after
      * excluding the first execution.
      *
      * <p>
-     * Returns 0 if this AggregateExecutionTime does not contain any 
+     * Returns 0 if this AggregateExecutionTime does not contain any
      * timing information yet. Returns the same value as returned by
      * getAverageInclusiveTime() if this ExecutionContext has been
      * executed only once.
@@ -402,11 +396,11 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
 
     /**
      * Gets the adjusted average exclusive time of each execution of the ExecutionContext.
-     * Adjusted average exclusive time means the average exclusive time calculated after 
+     * Adjusted average exclusive time means the average exclusive time calculated after
      * excluding the first execution.
      *
      * <p>
-     * Returns 0 if this AggregateExecutionTime does not contain any 
+     * Returns 0 if this AggregateExecutionTime does not contain any
      * timing information yet. Returns the same value as returned by
      * getAverageExclusiveTime() if this ExecutionContext has been
      * executed only once.
@@ -420,13 +414,13 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
                                                            / (getExecutionCount() - 1);
         }
     }
-    
+
     /**
      * Gets the name of the ExecutionContext.
      */
     public String getName(){
         return getContext().getName();
-    }    
+    }
 
     void mergeExecutionCount(AggregateExecutionTime aet) {
         mergeExecutionCount(aet.getExecutionCount());
@@ -460,7 +454,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     }
 
     void mergeLastExecution(AggregateExecutionTime aet) {
-        mergeLastExecution(aet.getTimeOfLastExecution(), 
+        mergeLastExecution(aet.getTimeOfLastExecution(),
                 aet.getInclusiveLastExecutionTime(), aet.getExclusiveLastExecutionTime());
     }
 
@@ -474,7 +468,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     }
 
     void mergeInclusiveTime(AggregateExecutionTime e) {
-        mergeInclusiveTime(e.getMaxInclusiveTime(), 
+        mergeInclusiveTime(e.getMaxInclusiveTime(),
                 e.getMinInclusiveTime(), e.getTotalInclusiveTime());
     }
 
@@ -485,7 +479,7 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     }
 
     void mergeExclusiveTime(AggregateExecutionTime e) {
-        mergeExclusiveTime(e.getMaxExclusiveTime(), 
+        mergeExclusiveTime(e.getMaxExclusiveTime(),
                 e.getMinExclusiveTime(), e.getTotalExclusiveTime());
     }
 
@@ -546,19 +540,19 @@ public class AggregateExecutionTime implements Cloneable, Serializable {
     public void setExecutionCount(int c) {
         this.count = c;
     }
-    
+
     public void setContext(ExecutionContext context) {
         this.ctx = context;
-    }    
-     
+    }
+
     /**
      * Gets the name of the layer to which the ExecutionContext falls under
      */
     public String getLayerName() {
         return this.layerName;
     }
-    
+
     public void setLayerName(String layer) {
-        this.layerName = layer;                
+        this.layerName = layer;
     }
 }
