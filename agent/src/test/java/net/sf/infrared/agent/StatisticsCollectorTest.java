@@ -1,6 +1,6 @@
-/* 
+/*
  * Copyright 2005 Tavant Technologies and Contributors
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  *
  *
  * Original Author:  binil.thomas (Tavant Technologies)
@@ -29,26 +29,26 @@ import net.sf.infrared.base.model.ExecutionTimer;
 import org.easymock.MockControl;
 
 public class StatisticsCollectorTest extends TestCase {
-    
+
     public void testIfExclusiveTimeIsSetCorrectly() {
         StatisticsCollector fixture = new StatisticsCollector() {
             long getPruneBelowTime() {
                 return 10;
             }
-            
+
             boolean isCallTracingEnabled() {
                 return false;
             }
-            
+
             public CollectionStrategy getCollectionStrategy() {
                 MockControl ctrl = MockControl.createNiceControl(CollectionStrategy.class);
                 CollectionStrategy mockStrategy = (CollectionStrategy) ctrl.getMock();
                 return mockStrategy;
             }
 
-			public MonitorConfig getConfiguration() {
-				return new MonitorConfigImpl();
-			}
+            public MonitorConfig getConfiguration() {
+                return new MonitorConfigImpl();
+            }
         };
 
         ExecutionTimer et1 = createTimer(100);
@@ -64,7 +64,7 @@ public class StatisticsCollectorTest extends TestCase {
                     fixture.recordExecutionBegin(et4);
                     fixture.recordExecutionEnd(et4);
                 fixture.recordExecutionEnd(et3);
-                
+
                 fixture.recordExecutionBegin(et5);
                 fixture.recordExecutionEnd(et5);
             fixture.recordExecutionEnd(et2);
@@ -72,20 +72,20 @@ public class StatisticsCollectorTest extends TestCase {
             fixture.recordExecutionBegin(et6);
             fixture.recordExecutionEnd(et6);
         fixture.recordExecutionEnd(et1);
-        
+
         assertEquals("et4 has no child methods, hence exclusive time should have been " +
                 "same as inclusive time 2", 2, et4.getExclusiveTime());
         // @TODO this might be a bug!!
         assertEquals("et3 will be pruned, hence inclusive time should have been " +
                 "same as exclusive time 5", 5, et3.getExclusiveTime());
-        
+
         assertEquals("et2's one child(et3) will be pruned but the other(et5) wont be, " +
                 "hence inclusive time should have been 60-20=40", 40, et2.getExclusiveTime());
-        
+
         assertEquals("et6 has no child methods, hence exclusive time is " +
                 "same as inclusive time 25", 25, et6.getExclusiveTime());
-        
-        assertEquals("et1's child methods time should be deducted (100-60-25=15)", 
+
+        assertEquals("et1's child methods time should be deducted (100-60-25=15)",
                 15, et1.getExclusiveTime());
     }
 
