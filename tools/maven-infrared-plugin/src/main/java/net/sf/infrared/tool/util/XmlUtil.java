@@ -1,32 +1,58 @@
+/* 
+ * Copyright 2005 Tavant Technologies and Contributors
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 package net.sf.infrared.tool.util;
 
+import java.io.BufferedOutputStream;
 import java.io.Closeable;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.StringReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import net.sf.infrared.tool.InfraredToolException;
 
-import org.apache.xml.serialize.OutputFormat;
-import org.apache.xml.serialize.XMLSerializer;
-import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.w3c.dom.bootstrap.DOMImplementationRegistry;
-import org.w3c.dom.ls.DOMImplementationLS;
-import org.w3c.dom.ls.LSOutput;
-import org.w3c.dom.ls.LSSerializer;
+import org.xml.sax.EntityResolver;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+/**
+ * Common utility methods related to xml 
+ * @author chetanm
+ * @date Jun 22, 2007
+ * @version $Revision: 1.1 $
+ */
 public class XmlUtil {
 	private static final Logger logger = Logger.getLogger(XmlUtil.class.getName());
+	private static final EntityResolver DUMMY_RESOLVER = new DummyResolver();
 
 	public Document createDocument(File file) {
 		Document d = null;
@@ -34,6 +60,7 @@ public class XmlUtil {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			factory.setValidating(false);
 			DocumentBuilder parser = factory.newDocumentBuilder();
+			parser.setEntityResolver(DUMMY_RESOLVER);
 			d = parser.parse(file);
 		} catch (ParserConfigurationException e) {
 			throw new InfraredToolException("Error in parsing xml document from " + file, e);
@@ -65,71 +92,58 @@ public class XmlUtil {
 		}
 	}
 
+	
 	public void writeDocumentToFile(Document doc, File file) {
-		FileWriter writer = null;
-		DOMImplementation implementation = null;
-		boolean success = false;
+		OutputStream os = null;
 		try {
-			implementation = DOMImplementationRegistry.newInstance().getDOMImplementation("XML 3.0");
-			if (implementation != null && implementation.getFeature("LS", "3.0") instanceof DOMImplementationLS) {
-				DOMImplementationLS feature = (DOMImplementationLS) implementation.getFeature("LS", "3.0");
-				LSSerializer serializer = feature.createLSSerializer();
-				LSOutput output = feature.createLSOutput();
-				try {
-					writer = new FileWriter(file);
-					output.setCharacterStream(writer);
-					serializer.write(doc, output);
-				} catch (IOException e) {
-					logger.log(Level.WARNING, "Error in using the DOM3 serialization. reverting to xerces", e);
-				} finally {
-					closeSilently(writer);
-				}
-				success = true;
-			} else {
-				logger.log(Level.FINE, "DOM3 implementation not found");
-			}
-		} catch (IllegalAccessException e) {
-			logger.log(Level.WARNING, "Error in using the DOM3 serialization. reverting to xerces", e);
-		} catch (ClassNotFoundException e) {
-			logger.log(Level.WARNING, "Error in using the DOM3 serialization. reverting to xerces", e);
-		} catch (ClassCastException e) {
-			logger.log(Level.WARNING, "Error in using the DOM3 serialization. reverting to xerces", e);
-		} catch (InstantiationException e) {
-			logger.log(Level.WARNING, "Error in using the DOM3 serialization. reverting to xerces", e);
-		}
-
-		if (!success) {
-			writeDocumentToFileUsingXerces(doc, file);
-		}
-	}
-
-	private void writeDocumentToFileUsingXerces(Document doc, File file) {
-		// TODO Should we have a dependency on xerces parser or use reflection
-		// here
-		FileWriter writer = null;
-		try {
-			writer = new FileWriter(file);
-			OutputFormat of = new OutputFormat(doc, "UTF-8", false);
-			of.setIndenting(true);
-			XMLSerializer xmlser = new XMLSerializer(writer, of);
-			xmlser.serialize(doc);
-			writer.flush();
+			DOMSource source = new DOMSource(doc);
+			os = new BufferedOutputStream(new FileOutputStream(file));
+			StreamResult result = new StreamResult(os);
+			TransformerFactory tf = TransformerFactory.newInstance();
+			Transformer t = tf.newTransformer();
+			t.setOutputProperty(javax.xml.transform.OutputKeys.INDENT, "yes");
+			t.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+			t.transform(source, result);
 		} catch (IOException ioex) {
 			throw new InfraredToolException("Failed to write XML document " + doc + " to file "
-					+ file.getAbsolutePath());
+					+ file.getAbsolutePath(),ioex);
+		} catch (TransformerException e) {
+			throw new InfraredToolException("Failed to write XML document " + doc + " to file "
+					+ file.getAbsolutePath(),e);
 		} finally {
-				closeSilently(writer);
+			closeSilently(os);
 		}
-
 	}
+	
+	
 
 	private void closeSilently(Closeable c) {
 		try {
-			c.close();
+			if(c != null)
+				c.close();
 		} catch (IOException e) {
 			// ignoring the closing exception here
 			logger.log(Level.FINE, "Error in closing connection", e);
 		}
 	}
 
+	/**
+	 * Dummy resolver so that underlying parser do not use external dtd references
+	 * This is required as tool should work event the system is not connected to internet
+	 * 
+	 *  For apache xerces parser we could have used
+	 *  <pre>
+	 *  builder.setFeature(
+     *	   "http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+  	 *  }
+	 *  </pre>
+	 *  But better we should not have any dependency on the xerces as such
+	 * @author chetanm
+	 *
+	 */
+	private static class DummyResolver implements EntityResolver {
+		  public InputSource resolveEntity(String publicId, String systemId) {
+		    return new InputSource(new StringReader(""));
+		  }
+	}
 }
