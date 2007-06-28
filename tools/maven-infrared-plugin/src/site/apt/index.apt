@@ -32,5 +32,5 @@ Infrared integration Plugin
   To provide you with better understanding on some usages of the Plugin,
   you can take a look into the following examples:
 
-  * {{{examples/minimal-maven.html}Using plugin which do not use Maven}}
+  * {{{examples/minimal-maven.html}Using plugin in projects which do not use Maven}}
  
