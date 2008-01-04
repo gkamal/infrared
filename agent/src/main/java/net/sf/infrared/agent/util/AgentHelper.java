@@ -21,8 +21,8 @@
  */
 package net.sf.infrared.agent.util;
 
-import java.io.InputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Properties;

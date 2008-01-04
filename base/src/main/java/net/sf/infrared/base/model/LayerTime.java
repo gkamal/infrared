@@ -21,10 +21,11 @@
  */
 package net.sf.infrared.base.model;
 
-import org.apache.log4j.Logger;
+import java.io.Serializable;
+
 import net.sf.infrared.base.util.LoggingFactory;
 
-import java.io.Serializable;
+import org.apache.log4j.Logger;
 
 /**
  * This class contains the total time taken for executions in each layer. Examples of layers 

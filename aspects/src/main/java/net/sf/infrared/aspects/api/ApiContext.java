@@ -33,7 +33,9 @@ import net.sf.infrared.aspects.AbstractExecutionContext;
  */
 public class ApiContext extends AbstractExecutionContext {
 
-    public static final String DELIMITER = ":";
+	private static final long serialVersionUID = 8725845370451073671L;
+
+	public static final String DELIMITER = ":";
     
     private String methodName;
 

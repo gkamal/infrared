@@ -24,9 +24,9 @@ package net.sf.infrared.agent;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-import org.easymock.MockControl;
-
 import junit.framework.TestCase;
+
+import org.easymock.MockControl;
 
 public class MonitorFactoryTest extends TestCase {
     protected void setUp() throws Exception {

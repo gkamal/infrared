@@ -51,7 +51,7 @@ public class StatisticsSnapshot implements Serializable, Cloneable {
     private LayerTimeRepository repository = new LayerTimeRepository();
 
     // true when the PerformanceStatistics contains any real statistics
-    private boolean hasStatistics = false;
+//    private boolean hasStatistics = false;
 
     // number of latest operation trees to store
     private int maxLastInvocations = DEFAULT_MAX_LAST_INVOCATIONS;
@@ -162,7 +162,7 @@ public class StatisticsSnapshot implements Serializable, Cloneable {
     void mergeTree(AggregateOperationTree tree) {
         if (tree != null) {
             this.tree.merge(tree);
-            hasStatistics = true;
+//            hasStatistics = true;
         }
     }
     
@@ -177,12 +177,12 @@ public class StatisticsSnapshot implements Serializable, Cloneable {
     
     void mergeLayerTime(String layerName, long time) {        
         repository.mergeHierarchicalLayerTime(layerName, time);
-        hasStatistics = true;
+//        hasStatistics = true;
     }
     
     void mergeExecutionTimes(String layerName, AggregateExecutionTime[] times) {
         repository.mergeExecutionTimes(layerName, times);
-        hasStatistics = true;        
+//        hasStatistics = true;        
     }
         
     // @TODO: improve considering the clocks & time zones of the agents
@@ -206,6 +206,6 @@ public class StatisticsSnapshot implements Serializable, Cloneable {
             }
         }
                 
-        hasStatistics = true;
+//        hasStatistics = true;
     }
 }

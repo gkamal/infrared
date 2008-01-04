@@ -21,13 +21,10 @@
  */
 package net.sf.infrared.agent;
 
+import junit.framework.TestCase;
 import net.sf.infrared.agent.transport.impl.DoNothingCollectionStrategy;
-import net.sf.infrared.base.model.ExecutionContext;
-import net.sf.infrared.base.model.ExecutionTimer;
 
 import org.easymock.MockControl;
-
-import junit.framework.TestCase;
 
 public class MonitorFacadeImplTest extends TestCase {
     boolean fail = true;

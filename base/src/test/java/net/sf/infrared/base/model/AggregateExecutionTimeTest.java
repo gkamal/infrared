@@ -21,9 +21,9 @@
  */
 package net.sf.infrared.base.model;
 
-import org.easymock.MockControl;
-
 import junit.framework.TestCase;
+
+import org.easymock.MockControl;
 
 public class AggregateExecutionTimeTest extends TestCase {
     public AggregateExecutionTimeTest(String str) {

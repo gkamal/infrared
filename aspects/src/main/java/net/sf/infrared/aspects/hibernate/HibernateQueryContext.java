@@ -28,7 +28,8 @@ import net.sf.infrared.aspects.AbstractExecutionContext;
  * @author binil.thomas
  */
 public class HibernateQueryContext extends AbstractExecutionContext {
-    private String query;
+	private static final long serialVersionUID = 6188275156433668510L;
+	private String query;
     
     public HibernateQueryContext(String query) {
         super("Hibernate");

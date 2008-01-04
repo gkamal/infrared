@@ -21,8 +21,8 @@
  */
 package net.sf.infrared.agent.transport;
 
-import net.sf.infrared.base.model.OperationStatistics;
 import net.sf.infrared.agent.MonitorConfig;
+import net.sf.infrared.base.model.OperationStatistics;
 
 /**
  * InfraRED uses 2 collection strategies for aggregating the performance

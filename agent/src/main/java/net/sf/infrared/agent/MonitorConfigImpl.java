@@ -68,8 +68,6 @@ public class MonitorConfigImpl implements MonitorConfig {
     
     private URL cfg;
     
-    private boolean isCallFromInfraredPropertiesMBean = false;
-    
     private ThreadLocal isMonitoringOnForCurrentThread = new ThreadLocal() {
         protected Object initialValue() {
             return DEFAULT_ENABLE_MONITORING_FOR_CURRENT_THREAD;

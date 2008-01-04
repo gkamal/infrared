@@ -1,5 +1,6 @@
 package net.sf.infrared.collector.impl.persistence;
 
+import java.sql.SQLException;
 import java.util.Hashtable;
 
 import javax.naming.InitialContext;
@@ -48,5 +49,15 @@ public class CollectorDataSource extends DelegatingDataSource {
 			setTargetDataSource(defaultDataSource);			
 		}		
 		super.afterPropertiesSet();
+	}
+
+	public boolean isWrapperFor(Class clazz) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Object unwrap(Class clazz) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 }

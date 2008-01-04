@@ -23,7 +23,6 @@ package net.sf.infrared.base.util;
 
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import net.sf.infrared.base.util.TreeNode;
 
 public class TreeNodeTest extends TestCase {
     public TreeNodeTest(String name) {

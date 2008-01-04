@@ -23,11 +23,10 @@ package net.sf.infrared.agent.setup;
 
 import javax.servlet.ServletContext;
 
+import junit.framework.TestCase;
 import net.sf.infrared.agent.MonitorConfigImpl;
 
 import org.easymock.MockControl;
-
-import junit.framework.TestCase;
 
 public class InfraREDServletContextListenerTest extends TestCase {
     boolean pass = false;

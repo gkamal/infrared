@@ -32,6 +32,7 @@ import net.sf.infrared.base.model.ExecutionContext;
  * @author binil.thomas
  */
 public class SqlContext implements ExecutionContext {
+	private static final long serialVersionUID = 2479921818308143031L;
 	private SqlPrepareContext prepare = null;
 	private SqlExecuteContext execute = null;
 	private String sql;

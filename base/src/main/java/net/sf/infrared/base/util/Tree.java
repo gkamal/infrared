@@ -21,9 +21,9 @@
  */
 package net.sf.infrared.base.util;
 
-import org.apache.log4j.Logger;
-
 import java.io.Serializable;
+
+import org.apache.log4j.Logger;
 
 /**
  * Implementation of a Tree data Structure. A node in this tree can represent

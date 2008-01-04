@@ -21,16 +21,16 @@
  */
 package net.sf.infrared.base;
 
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import net.sf.infrared.base.model.AggregateExecutionTimeTest;
 import net.sf.infrared.base.model.AggregateOperationTreeTest;
 import net.sf.infrared.base.model.ApplicationStatisticsTest;
 import net.sf.infrared.base.model.ExecutionTimeTest;
+import net.sf.infrared.base.util.LoggingFactoryTest;
 import net.sf.infrared.base.util.TreeNodeTest;
 import net.sf.infrared.base.util.TreeTest;
-import net.sf.infrared.base.util.LoggingFactoryTest;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 public class TestAll extends TestCase {
     public TestAll(String str) {

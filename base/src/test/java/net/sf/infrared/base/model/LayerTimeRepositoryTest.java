@@ -8,7 +8,11 @@
 package net.sf.infrared.base.model;
 
 import java.util.Collection;
-import junit.framework.*;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
 import org.easymock.MockControl;
 
 /**

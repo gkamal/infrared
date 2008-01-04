@@ -45,10 +45,6 @@ public class StatisticsCollectorTest extends TestCase {
                 CollectionStrategy mockStrategy = (CollectionStrategy) ctrl.getMock();
                 return mockStrategy;
             }
-
-            public MonitorConfig getConfiguration() {
-                return new MonitorConfigImpl();
-            }
         };
 
         ExecutionTimer et1 = createTimer(100);

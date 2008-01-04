@@ -81,17 +81,6 @@ public class ApplicationStatisticsTest extends TestCase {
         assertFalse(fixture.hasStatistics());
     }
     
-    public void testMergeOpStats() {
-        ApplicationStatistics fixture = new ApplicationStatistics(TEST_APP, TEST_INST);
-        OperationStatistics stats1 = createOperationStatistics(TEST_APP, TEST_INST);
-    }
-    
-    private OperationStatistics createOperationStatistics(String appName, String instId) {
-        OperationStatistics stats = new OperationStatistics(appName, instId);
-        
-        return stats;
-    }
-        
     public void testAddingToLastInvocationTrees() {
         ApplicationStatistics fixture = new ApplicationStatistics(TEST_APP, TEST_INST);
         fixture.setMaxLastInvocations(2); // only two tree shd be held

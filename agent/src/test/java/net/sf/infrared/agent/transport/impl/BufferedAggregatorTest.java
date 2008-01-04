@@ -23,13 +23,12 @@ package net.sf.infrared.agent.transport.impl;
 
 import junit.framework.TestCase;
 import junit.textui.TestRunner;
-
-import org.easymock.ArgumentsMatcher;
-import org.easymock.MockControl;
-
 import net.sf.infrared.agent.transport.Forwarder;
 import net.sf.infrared.base.model.ApplicationStatistics;
 import net.sf.infrared.base.model.OperationStatistics;
+
+import org.easymock.ArgumentsMatcher;
+import org.easymock.MockControl;
 
 /**
  */

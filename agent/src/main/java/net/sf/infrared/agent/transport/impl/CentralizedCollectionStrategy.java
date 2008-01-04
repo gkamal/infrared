@@ -21,15 +21,15 @@
  */
 package net.sf.infrared.agent.transport.impl;
 
-import org.apache.log4j.Logger;
-
 import net.sf.infrared.agent.MonitorConfig;
 import net.sf.infrared.agent.transport.Aggregator;
 import net.sf.infrared.agent.transport.CollectionStrategy;
-import net.sf.infrared.agent.transport.Forwarder;
 import net.sf.infrared.agent.transport.FlushPolicy;
+import net.sf.infrared.agent.transport.Forwarder;
 import net.sf.infrared.base.model.OperationStatistics;
 import net.sf.infrared.base.util.LoggingFactory;
+
+import org.apache.log4j.Logger;
 
 /**
  * The CollectionStrategy impelementation, creates the Aggregator, Forwarder &

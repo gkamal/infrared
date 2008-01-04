@@ -164,17 +164,6 @@ class LoggerDecorator extends Logger {
 		return delegate.getAppender(arg0);
 	}
 
-	public Priority getChainedPriority() {
-		return delegate.getChainedPriority();
-	}
-
-	public Level getEffectiveLevel() {
-		return delegate.getEffectiveLevel();
-	}
-
-	public LoggerRepository getHierarchy() {
-		return delegate.getHierarchy();
-	}
 
 	public LoggerRepository getLoggerRepository() {
 		return delegate.getLoggerRepository();
@@ -246,10 +235,6 @@ class LoggerDecorator extends Logger {
 
 	public void setLevel(Level arg0) {
 		delegate.setLevel(arg0);
-	}
-
-	public void setPriority(Priority arg0) {
-		delegate.setPriority(arg0);
 	}
 
 	public void setResourceBundle(ResourceBundle arg0) {

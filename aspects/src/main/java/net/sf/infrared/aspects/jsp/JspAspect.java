@@ -21,15 +21,11 @@
  */
 package net.sf.infrared.aspects.jsp;
 
-import net.sf.infrared.base.util.LoggingFactory;
-import org.apache.log4j.Logger;
-import org.codehaus.aspectwerkz.joinpoint.StaticJoinPoint;
-
 import net.sf.infrared.aspects.AbstractBaseAspect;
 
+import org.codehaus.aspectwerkz.joinpoint.StaticJoinPoint;
+
 public class JspAspect extends AbstractBaseAspect {
-    private static final Logger log = LoggingFactory.getLogger(JspAspect.class);
-    
     public Object aroundJspExecution(StaticJoinPoint sjp) throws Throwable {        
     	
     	if(!isMonitoringEnabled()) {

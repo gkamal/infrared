@@ -23,11 +23,11 @@ package net.sf.infrared.base.model;
 
 import java.util.List;
 
-import org.easymock.MockControl;
-
+import junit.framework.TestCase;
 import net.sf.infrared.base.util.Tree;
 import net.sf.infrared.base.util.TreeNode;
-import junit.framework.TestCase;
+
+import org.easymock.MockControl;
 
 public class AggregateOperationTreeTest extends TestCase {
     /* 

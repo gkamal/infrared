@@ -30,7 +30,6 @@ import net.sf.infrared.base.util.LoggingFactory;
 import org.apache.log4j.Logger;
 
 import EDU.oswego.cs.dl.util.concurrent.BoundedBuffer;
-import EDU.oswego.cs.dl.util.concurrent.Executor;
 import EDU.oswego.cs.dl.util.concurrent.PooledExecutor;
 
 /**

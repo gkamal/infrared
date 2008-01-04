@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -120,11 +121,18 @@ public class ApplicationStatisticsDaoImplTest extends TestCase {
         apps.add("iRes");            
         ArrayList hosts = new ArrayList();
         hosts.add("host1");                
-        StatisticsSnapshot snapShotfromDb = dao.fetchStatistics(apps, hosts, new Date(103, 2, 12), new Date());
+        StatisticsSnapshot snapShotfromDb = dao.fetchStatistics(apps, hosts, createDate(103, 2, 12), new Date());
         checkSnapShotValidity(snapShotfromDb);
         sctx.shutdown();        
         clearDbFiles(dao);
     }
+
+	private Date createDate(int year, int month, int date) {
+		Calendar cal = Calendar.getInstance();
+		cal.set(year, month, date);
+		return cal.getTime();
+		
+	}
     
     
     private void clearDbFiles(ApplicationStatisticsDao dao) {

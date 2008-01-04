@@ -21,18 +21,18 @@
  */
 package net.sf.infrared.agent.transport.impl;
 
-import org.apache.log4j.Logger;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.net.ConnectException;
+import java.net.InetAddress;
+import java.net.Socket;
 
 import net.sf.infrared.base.model.ApplicationStatistics;
 import net.sf.infrared.base.model.OperationStatistics;
 import net.sf.infrared.base.util.LoggingFactory;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.ConnectException;
+import org.apache.log4j.Logger;
 
 /**
  * Responsible for writing the Statistics details to a Socket in case of

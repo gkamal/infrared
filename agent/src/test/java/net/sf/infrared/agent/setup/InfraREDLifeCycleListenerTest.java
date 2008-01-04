@@ -21,9 +21,9 @@
  */
 package net.sf.infrared.agent.setup;
 
+import junit.framework.TestCase;
 import net.sf.infrared.agent.MonitorFactory;
 import net.sf.infrared.agent.MultipleEntryGuard;
-import junit.framework.TestCase;
 
 public class InfraREDLifeCycleListenerTest extends TestCase {
     protected void setUp() throws Exception {

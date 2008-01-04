@@ -22,7 +22,6 @@
 package net.sf.infrared.agent;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import net.sf.infrared.agent.transport.CollectionStrategy;

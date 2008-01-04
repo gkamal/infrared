@@ -21,12 +21,12 @@
  */
 package net.sf.infrared.agent.transport.impl;
 
+import net.sf.infrared.agent.MonitorConfig;
 import net.sf.infrared.agent.transport.Aggregator;
 import net.sf.infrared.agent.transport.CollectionStrategy;
 import net.sf.infrared.agent.transport.FlushPolicy;
 import net.sf.infrared.agent.transport.Forwarder;
 import net.sf.infrared.base.model.OperationStatistics;
-import net.sf.infrared.agent.MonitorConfig;
 
 /**
  * 

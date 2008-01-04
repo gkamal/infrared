@@ -21,10 +21,8 @@
  */
 package net.sf.infrared.aspects.jsp;
 
-import java.io.File;
-
-import net.sf.infrared.base.model.ExecutionContext;
 import junit.framework.TestCase;
+import net.sf.infrared.base.model.ExecutionContext;
 
 public class JspContextTest extends TestCase {
     public void testWeblogicJspName() {        

@@ -22,10 +22,8 @@
 package net.sf.infrared.collector.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import junit.framework.TestCase;
-import net.sf.infrared.base.model.ApplicationStatistics;
 import net.sf.infrared.collector.Collector;
 
 public class CollectorImplTest  extends TestCase {

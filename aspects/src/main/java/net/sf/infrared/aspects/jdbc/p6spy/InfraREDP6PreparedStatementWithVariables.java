@@ -27,10 +27,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import net.sf.infrared.agent.MonitorFactory;
+import net.sf.infrared.agent.StatisticsCollector;
 import net.sf.infrared.aspects.jdbc.SqlExecuteContext;
 import net.sf.infrared.base.model.ExecutionTimer;
-import net.sf.infrared.base.model.ExecutionContext;
-import net.sf.infrared.agent.StatisticsCollector;
 
 import com.p6spy.engine.spy.P6Connection;
 import com.p6spy.engine.spy.P6PreparedStatement;
@@ -43,8 +42,6 @@ import com.p6spy.engine.spy.P6Statement;
  */
 public class InfraREDP6PreparedStatementWithVariables extends P6PreparedStatement { 
     protected InfraREDP6Factory factory;
-	
-    private ExecutionContext executeCtx;
 	
     public InfraREDP6PreparedStatementWithVariables(InfraREDP6Factory infraP6Factory, 
             PreparedStatement real, P6Connection conn, String sql) {

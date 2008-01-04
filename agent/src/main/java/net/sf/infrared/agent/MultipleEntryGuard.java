@@ -21,10 +21,10 @@
  */
 package net.sf.infrared.agent;
 
-import org.apache.log4j.Logger;
-
 import net.sf.infrared.base.model.ExecutionTimer;
 import net.sf.infrared.base.util.LoggingFactory;
+
+import org.apache.log4j.Logger;
 
 /**
  * 
@@ -38,19 +38,19 @@ public class MultipleEntryGuard implements MonitorFacade {
 
     private static final long NO_OF_FATAL_ERRORS_TOLERATED = 10;
 
-    private static final int THRESHOLD = 30;
+//    private static final int THRESHOLD = 30;
 
     private MonitorFacade delegate;
 
     private int fatalErrors = 0;
 
-    private long methodStartTime = 0;
+//    private long methodStartTime = 0;
 
-    private ThreadLocal callInProgress = new ThreadLocal() {
-        protected synchronized Object initialValue() {
-            return Boolean.FALSE;
-        }
-    };
+//    private ThreadLocal callInProgress = new ThreadLocal() {
+//        protected synchronized Object initialValue() {
+//            return Boolean.FALSE;
+//        }
+//    };
 
     public MultipleEntryGuard(MonitorFacade delegate) {
         if (delegate == null) {
@@ -116,11 +116,11 @@ public class MultipleEntryGuard implements MonitorFacade {
         return delegate.getConfiguration();
     }
 
-    private boolean isCallInProgress() {
-        // We put only Boolean.TRUE and Boolean.FALSE in the threadlocal
-        // so identity comparison against those will work
-        return ((Boolean) callInProgress.get()) == Boolean.TRUE;
-    }
+//    private boolean isCallInProgress() {
+//        // We put only Boolean.TRUE and Boolean.FALSE in the threadlocal
+//        // so identity comparison against those will work
+//        return ((Boolean) callInProgress.get()) == Boolean.TRUE;
+//    }
     
     public String getApplicationName() {
         return delegate.getApplicationName();
@@ -134,26 +134,25 @@ public class MultipleEntryGuard implements MonitorFacade {
         delegate.destroy();
     }
 
-    private void startCall() {
+//    private void startCall() {
 //        if (log.isDebugEnabled()) {
 //            log.debug("\nInfraRED start on " + Thread.currentThread());
 //        }
-        callInProgress.set(Boolean.TRUE);
-        //methodStartTime = System.currentTimeMillis();
-    }
+//        callInProgress.set(Boolean.TRUE);
+//        methodStartTime = System.currentTimeMillis();
+//    }
 
-    private void endCall() {
-    	/*
-        long timeInInfraRed = System.currentTimeMillis() - methodStartTime;
-        if (timeInInfraRed > THRESHOLD) {
-            log.debug("The execution time in InfraRED is above the threshold");
-        }*/
-        //methodStartTime = 0;
-        callInProgress.set(Boolean.FALSE);
+//    private void endCall() {
+//        long timeInInfraRed = System.currentTimeMillis() - methodStartTime;
+//        if (timeInInfraRed > THRESHOLD) {
+//            log.debug("The execution time in InfraRED is above the threshold");
+//        }
+//        //methodStartTime = 0;
+//        callInProgress.set(Boolean.FALSE);
 //        if (log.isDebugEnabled()) {
 //            log.debug("InfraRED end on " + Thread.currentThread() + "\n");
 //        }
-    }
+//    }
 
     private void handleError() {
         fatalErrors++;

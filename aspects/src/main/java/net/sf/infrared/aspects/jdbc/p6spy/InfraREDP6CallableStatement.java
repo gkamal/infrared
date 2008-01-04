@@ -30,8 +30,11 @@ import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.Clob;
 import java.sql.Date;
+import java.sql.NClob;
 import java.sql.Ref;
+import java.sql.RowId;
 import java.sql.SQLException;
+import java.sql.SQLXML;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -53,8 +56,6 @@ public class InfraREDP6CallableStatement
 
     private CallableStatement passThru;
 
-    private String callableQuery;
-
     private ExecutionContext ctx;
 
     public InfraREDP6CallableStatement(InfraREDP6Factory infraP6Factory, 
@@ -62,7 +63,6 @@ public class InfraREDP6CallableStatement
         super(infraP6Factory, real, conn, sql);
         this.passThru = real;
         this.factory = infraP6Factory;
-        this.callableQuery = sql;
         this.conn = conn;
         this.ctx = infraP6Factory.getExecuteContext(sql);
     }
@@ -405,4 +405,147 @@ public class InfraREDP6CallableStatement
         return passThru.getURL(parameterName);
     }
 
+	public Reader getCharacterStream(int parameterIndex) throws SQLException {
+		return passThru.getCharacterStream(parameterIndex);
+	}
+
+	public Reader getCharacterStream(String parameterName) throws SQLException {
+		return passThru.getCharacterStream(parameterName);
+	}
+
+	public Reader getNCharacterStream(int parameterIndex) throws SQLException {
+		return passThru.getNCharacterStream(parameterIndex);
+	}
+
+	public Reader getNCharacterStream(String parameterName) throws SQLException {
+		return passThru.getNCharacterStream(parameterName);
+	}
+
+	public NClob getNClob(int parameterIndex) throws SQLException {
+		return passThru.getNClob(parameterIndex);
+	}
+
+	public NClob getNClob(String parameterName) throws SQLException {
+		return passThru.getNClob(parameterName);
+	}
+
+	public String getNString(int parameterIndex) throws SQLException {
+		return passThru.getNString(parameterIndex);
+	}
+
+	public String getNString(String parameterName) throws SQLException {
+		return passThru.getNString(parameterName);
+	}
+
+	public RowId getRowId(int parameterIndex) throws SQLException {
+		return passThru.getRowId(parameterIndex);
+	}
+
+	public RowId getRowId(String parameterName) throws SQLException {
+		return passThru.getRowId(parameterName);
+	}
+
+	public SQLXML getSQLXML(int parameterIndex) throws SQLException {
+		return passThru.getSQLXML(parameterIndex);
+	}
+
+	public SQLXML getSQLXML(String parameterName) throws SQLException {
+		return passThru.getSQLXML(parameterName);
+	}
+
+	public void setAsciiStream(String parameterName, InputStream x)
+			throws SQLException {
+		passThru.setAsciiStream(parameterName, x);
+	}
+
+	public void setAsciiStream(String parameterName, InputStream x, long length)
+			throws SQLException {
+		passThru.setAsciiStream(parameterName, x, length);
+	}
+
+	public void setBinaryStream(String parameterName, InputStream x)
+			throws SQLException {
+		passThru.setBinaryStream(parameterName, x);
+	}
+
+	public void setBinaryStream(String parameterName, InputStream x, long length)
+			throws SQLException {
+		passThru.setBinaryStream(parameterName, x, length);
+	}
+
+	public void setBlob(String parameterName, Blob x) throws SQLException {
+		passThru.setBlob(parameterName, x);
+	}
+
+	public void setBlob(String parameterName, InputStream inputStream)
+			throws SQLException {
+		passThru.setBlob(parameterName, inputStream);
+	}
+
+	public void setBlob(String parameterName, InputStream inputStream,
+			long length) throws SQLException {
+		passThru.setBlob(parameterName, inputStream, length);
+	}
+
+	public void setCharacterStream(String parameterName, Reader reader)
+			throws SQLException {
+		passThru.setCharacterStream(parameterName, reader);
+	}
+
+	public void setCharacterStream(String parameterName, Reader reader,
+			long length) throws SQLException {
+		passThru.setCharacterStream(parameterName, reader, length);
+	}
+
+	public void setClob(String parameterName, Clob x) throws SQLException {
+		passThru.setClob(parameterName, x);
+	}
+
+	public void setClob(String parameterName, Reader reader)
+			throws SQLException {
+		passThru.setClob(parameterName, reader);
+	}
+
+	public void setClob(String parameterName, Reader reader, long length)
+			throws SQLException {
+		passThru.setClob(parameterName, reader, length);
+	}
+
+	public void setNCharacterStream(String parameterName, Reader value)
+			throws SQLException {
+		passThru.setNCharacterStream(parameterName, value);
+	}
+
+	public void setNCharacterStream(String parameterName, Reader value,
+			long length) throws SQLException {
+		passThru.setNCharacterStream(parameterName, value, length);
+	}
+
+	public void setNClob(String parameterName, NClob value) throws SQLException {
+		passThru.setNClob(parameterName, value);
+	}
+
+	public void setNClob(String parameterName, Reader reader)
+			throws SQLException {
+		passThru.setNClob(parameterName, reader);
+	}
+
+	public void setNClob(String parameterName, Reader reader, long length)
+			throws SQLException {
+		passThru.setNClob(parameterName, reader, length);
+	}
+
+	public void setNString(String parameterName, String value)
+			throws SQLException {
+		passThru.setNString(parameterName, value);
+	}
+
+	public void setRowId(String parameterName, RowId x) throws SQLException {
+		passThru.setRowId(parameterName, x);
+	}
+
+	public void setSQLXML(String parameterName, SQLXML xmlObject)
+			throws SQLException {
+		passThru.setSQLXML(parameterName, xmlObject);
+	}
 }

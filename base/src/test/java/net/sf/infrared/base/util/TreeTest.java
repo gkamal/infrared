@@ -23,9 +23,6 @@ package net.sf.infrared.base.util;
 
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import net.sf.infrared.base.util.NodeVisitor;
-import net.sf.infrared.base.util.Tree;
-import net.sf.infrared.base.util.TreeNode;
 
 /**
  */

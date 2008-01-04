@@ -21,13 +21,13 @@
  */
 package net.sf.infrared.agent;
 
-import org.easymock.MockControl;
-
+import junit.framework.TestCase;
 import net.sf.infrared.base.model.ExecutionContext;
 import net.sf.infrared.base.model.ExecutionTimer;
 import net.sf.infrared.base.util.Tree;
 import net.sf.infrared.base.util.TreeNode;
-import junit.framework.TestCase;
+
+import org.easymock.MockControl;
 
 public class TreeBuilderTest extends TestCase {
     /*

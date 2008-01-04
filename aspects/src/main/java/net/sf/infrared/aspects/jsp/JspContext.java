@@ -21,7 +21,6 @@
  */
 package net.sf.infrared.aspects.jsp;
 
-import java.io.File;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,7 +28,9 @@ import java.util.regex.Pattern;
 import net.sf.infrared.aspects.AbstractExecutionContext;
 
 public class JspContext extends AbstractExecutionContext {
-    private static Properties cache = new Properties();
+ 	private static final long serialVersionUID = -809868748027941254L;
+
+	private static Properties cache = new Properties();
     
     private static final String JASPER_PREFIX = "org.apache.jsp.";
     

@@ -21,12 +21,11 @@
  */
 package net.sf.infrared.agent.transport.impl;
 
-import junit.framework.TestCase;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import junit.framework.TestCase;
 import net.sf.infrared.agent.util.MutableInteger;
 
 public class SocketWriterTest extends TestCase {

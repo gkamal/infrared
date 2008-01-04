@@ -25,7 +25,8 @@ import net.sf.infrared.aspects.AbstractExecutionContext;
 
 public class ServletContext extends AbstractExecutionContext {
     
-    private String uri;
+ 	private static final long serialVersionUID = 683188500077296935L;
+	private String uri;
     
     public ServletContext(String uri) {
         super("HTTP");

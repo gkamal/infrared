@@ -21,15 +21,15 @@
  */
 package net.sf.infrared.base.util;
 
-import net.sf.infrared.base.model.AggregateExecutionTime;
-
-import org.apache.log4j.Logger;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
+import net.sf.infrared.base.model.AggregateExecutionTime;
+
+import org.apache.log4j.Logger;
 
 /**
  * Implementation of a TreeNode that represents a single node in a Tree.
