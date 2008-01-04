@@ -25,7 +25,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * TODO
+ * TestCase for LoggingFactory
  *
  * @author Binil Thomas
  */

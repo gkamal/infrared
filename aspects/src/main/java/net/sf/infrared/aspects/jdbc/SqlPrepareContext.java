@@ -31,6 +31,7 @@ import net.sf.infrared.base.model.ExecutionContext;
  * @author binil.thomas
  */
 public class SqlPrepareContext implements ExecutionContext {
+	private static final String SQL_LAYER = "SQL";
 	private static final long serialVersionUID = 6816327497274366648L;
 	private SqlContext parent;
 	
@@ -60,7 +61,7 @@ public class SqlPrepareContext implements ExecutionContext {
 	}
 
 	public String getLayer() {
-		return "SQL"; //@TODO make constant!
+		return SQL_LAYER;
 	}
 
 	public List getChildren() {

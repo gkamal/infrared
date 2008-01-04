@@ -52,12 +52,10 @@ public class CollectorDataSource extends DelegatingDataSource {
 	}
 
 	public boolean isWrapperFor(Class clazz) throws SQLException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public Object unwrap(Class clazz) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}	
 }
