@@ -1,0 +1,119 @@
+/*
+ *
+ * Copyright 2005 Tavant Technologies and Contributors
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ *
+ *
+ * Original Author:  sreejith.unnikrishnan (Tavant Technologies)
+ * Contributor(s):   -; 
+ *					
+ */
+
+/* CSS Document */
+BODY {
+	margin: 0px;
+	background-color: #EFEFEF;
+	text-align: center;
+	scrollbar-base-color: #EFEFEF;
+	scrollbar-arrow-color: #000000;
+	scrollbar-track-color:	#EFEFEF;
+	scrollbar-3dlight-color: #CCCCCC;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-darkshadow-color: #666666;
+	scrollbar-shadow-color: #CCCCCC;
+	scrollbar-face-color: #EFEFEF;
+}
+
+TD {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 15px;
+	border: 1px solid #EFEFEF;
+	vertical-align: top;
+	padding: 2px;
+	white-space: nowrap;
+	background-color: #FFFFFF;
+}
+
+SELECT {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 10px;
+	text-align: left;
+	scrolling: no;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+}
+
+TEXTAREA {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 15px;
+	text-align: left;
+	vertical-align: top;
+	wrap: PHYSICAL;
+	scrollbar-base-color: #EFEFEF;
+	scrollbar-arrow-color: #000000;
+	scrollbar-track-color:	#EFEFEF;
+	scrollbar-3dlight-color: #CCCCCC;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-darkshadow-color: #666666;
+	scrollbar-shadow-color: #CCCCCC;
+	scrollbar-face-color: #EFEFEF;
+	background-color: #FFFFFF;
+}
+
+INPUT {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 10px;
+	background-color: #FFFFFF;
+}
+
+IFRAME {
+	padding: 0px;
+	border: 1px solid #EFEFEF;
+	scrollbar-base-color: #EFEFEF;
+	scrollbar-arrow-color: #000000;
+	scrollbar-track-color:	#EFEFEF;
+	scrollbar-3dlight-color: #CCCCCC;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-darkshadow-color: #666666;
+	scrollbar-shadow-color: #CCCCCC;
+	scrollbar-face-color: #EFEFEF;
+}
+
+a:link, a:visited, a:active {
+	color: #000099;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #000000;
+	text-decoration: none;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #CCCCCC;
+	border-right-color: #CCCCCC;
+	border-bottom-color: #CCCCCC;
+	border-left-color: #CCCCCC;
+}

@@ -27,20 +27,20 @@
 
 package net.sf.infrared.collector.impl.transport;
 
-import org.apache.log4j.Logger;
+import java.io.IOException;
+import java.net.BindException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 import net.sf.infrared.base.util.LoggingFactory;
 import net.sf.infrared.collector.CollectorConfig;
 import net.sf.infrared.collector.StatisticsRepository;
 
-import java.net.BindException;
-import java.net.Socket;
-import java.net.ServerSocket;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.io.IOException;
+import org.apache.log4j.Logger;
 
 /**
  * This thread listens on a server socket for connections from remote agents.

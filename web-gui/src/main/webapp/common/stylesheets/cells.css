@@ -1,0 +1,332 @@
+/*
+ *
+ * Copyright 2005 Tavant Technologies and Contributors
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ *
+ *
+ * Original Author:  sreejith.unnikrishnan (Tavant Technologies)
+ * Contributor(s):   -; 
+ *					
+ */
+
+/* CSS Document */
+.noBorderCell {
+	padding: 0px;
+	border: none;
+}
+
+.wrappedTD {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 15px;
+	border: 1px solid #EFEFEF;
+	vertical-align: top;
+	padding: 2px;
+	white-space: normal;
+}
+.numericTD {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 15px;
+	border: 1px solid #EFEFEF;
+	vertical-align: top;
+	text-align: right;
+	padding: 2px;
+	white-space: normal;
+}
+
+.copyright {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #666666;
+	background-color: #EFEFEF;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 2px;
+	padding-right: 5px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	border-left: 1px solid #CCCCCC;
+}
+
+.section {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #003366;
+	border: 1px outset #FFFFFF;
+	font-variant: small-caps;
+	padding: 0px;
+	text-indent: 5px;
+}
+
+.sectionClose {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	font-variant: small-caps;
+	background-image: url(../graphics/plus.gif);
+	background-repeat: no-repeat;
+	text-indent: 10px;
+	cursor: hand;
+	background-color: #003366;
+	border: 1px outset #FFFFFF;
+}
+
+.sectionOpen {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	font-variant: small-caps;
+	background-image: url(../graphics/minus.gif);
+	background-repeat: no-repeat;
+	text-indent: 10px;
+	cursor: hand;
+	background-color: #003366;
+	border: 1px outset #FFFFFF;
+}
+
+.sectionStatus {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	font-variant: small-caps;
+	text-align: right;
+	background-color: #003366;
+	border: 1px outset #FFFFFF;
+}
+
+.subSection {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #6699CC;
+	border: 1px outset #FFFFFF;
+	font-variant: small-caps;
+	padding: 0px;
+	text-indent: 5px;
+}
+.subSectionClose {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	font-variant: small-caps;
+	background-image: url(../graphics/plus.gif);
+	background-repeat: no-repeat;
+	text-indent: 10px;
+	cursor: hand;
+	background-color: #6699CC;
+	border: 1px outset #FFFFFF;
+}
+
+.subSectionOpen {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	font-variant: small-caps;
+	background-image: url(../graphics/minus.gif);
+	background-repeat: no-repeat;
+	text-indent: 10px;
+	cursor: hand;
+	background-color: #6699CC;
+	border: 1px outset #FFFFFF;
+}
+
+.subSectionStatus {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #6699CC;
+	border: 1px outset #FFFFFF;
+	font-variant: small-caps;
+	padding: 0px;
+	text-indent: 5px;
+	text-align: right;
+}
+
+.lablel1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #000066;
+	background-color: #DDDDDD;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.lablel2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #000000;
+	background-color: #EFEFEF;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.lablel1Bold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 15px;
+	font-weight: bold;
+	color: #000066;
+	background-color: #DDDDDD;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.smallFont {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	line-height: 15px;
+	border: 1px solid #CCCCCC;
+	vertical-align: top;
+	padding: 2px;
+	color: #666666;
+}
+
+.pageTitle {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 16px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #3c7aa6;
+	border: 2px outset #CCCCCC;
+	vertical-align: middle;
+	font-variant: small-caps;
+	padding: 0px;
+	text-indent: 5px;
+}
+.moduleTitle {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 16px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #777777;
+	border: 2px outset #CCCCCC;
+	padding:0px;
+	text-indent: 5px;
+}
+.workflow {
+	background-color: #FFCC66;
+	border: 1px solid #CCCCCC;
+	margin: 0px;
+	padding: 0px;
+}
+.complete {
+	color: #000000;
+	background-color: #99CC00;
+	border: 2px groove #CCCCCC;
+}
+
+.inComplete {
+	color: #000000;
+	background-color: #FF9900;
+	border: 2px groove #CCCCCC;
+}
+
+.backgroundProcess {
+	background-color: #CCCCCC;
+	color: #000000;
+}
+
+.notStarted {
+	color: #000000;
+	background-color: #66CCFF;
+	border: 2px groove #CCCCCC;
+}
+.date {
+	vertical-align: text-bottom;
+	background-image: url(../graphics/calendarIcon.gif);
+	height: 21px;
+	width: 26px;
+	border: 2px outset #CCCCCC;
+}
+.tavantLogo {
+	background-color: #CC3300;
+	padding: 0px;
+	height: 55px;
+	background-image: url(../graphics/logo.gif);
+	background-repeat: no-repeat;
+	border-top: 1px outset #FFFFFF;
+	border-right: none;
+	border-bottom: 1px outset #FFFFFF;
+	border-left: 1px outset #FFFFFF;
+
+}
+.projectLogo {
+	background-color: #000066;
+	padding: 0px;
+	height: 55px;
+	background-image: url(../graphics/logo.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+	border-top: 1px outset #FFFFFF;
+	border-right: 1px outset #FFFFFF;
+	border-bottom: 1px outset #FFFFFF;
+	border-left: none;
+
+
+}
+
+.sql {
+	color: #0000FF;
+}
+

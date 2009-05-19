@@ -6,7 +6,6 @@
         <groupId>net.sf.infrared</groupId>
         <artifactId>infrared-parent</artifactId>
         <version>2.6-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <name>collector</name>
@@ -30,11 +29,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${spring-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-dao</artifactId>
             <version>${spring-version}</version>
         </dependency>
         <dependency>

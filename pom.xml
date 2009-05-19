@@ -12,6 +12,7 @@
         <module>agent</module>
         <module>aspects</module>
         <module>collector</module>
+        <module>web-gui</module>
     </modules>
 
     <name>InfraRED</name>
@@ -234,8 +235,8 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.4</source>
-                    <target>1.4</target>
+                    <source>1.5</source>
+                    <target>1.5</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -312,6 +313,6 @@
     </reporting>
 
     <properties>
-		<spring-version>1.2.8</spring-version>
+		<spring-version>2.5.6</spring-version>
     </properties>
 </project>

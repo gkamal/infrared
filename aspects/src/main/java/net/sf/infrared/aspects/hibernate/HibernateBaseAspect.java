@@ -22,6 +22,7 @@
 package net.sf.infrared.aspects.hibernate;
 
 import net.sf.infrared.aspects.AbstractBaseAspect;
+
 import org.codehaus.aspectwerkz.joinpoint.StaticJoinPoint;
 
 /**

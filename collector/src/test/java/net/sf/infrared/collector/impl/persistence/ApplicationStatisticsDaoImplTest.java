@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import junit.framework.TestCase;
 import net.sf.infrared.aspects.api.ApiContext;
 import net.sf.infrared.aspects.jdbc.SqlContext;
 import net.sf.infrared.aspects.jdbc.SqlExecuteContext;
@@ -47,7 +48,6 @@ import net.sf.infrared.base.model.StatisticsSnapshot;
 import net.sf.infrared.base.util.Tree;
 import net.sf.infrared.base.util.TreeNode;
 import net.sf.infrared.collector.ApplicationStatisticsDao;
-import junit.framework.TestCase;
 
 public class ApplicationStatisticsDaoImplTest extends TestCase {
 			

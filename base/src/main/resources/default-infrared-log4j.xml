@@ -23,11 +23,11 @@
 -->
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration debug="false">
-    <appender name="NOOP" class="net.sf.infrared.org.apache.log4j.varia.NullAppender">
+    <appender name="NOOP" class="org.apache.log4j.varia.NullAppender">
     </appender>
     
-    <appender name="CONSOLE" class="net.sf.infrared.org.apache.log4j.ConsoleAppender">
-        <layout class="net.sf.infrared.org.apache.log4j.PatternLayout">
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="[InfraRED] -- %m%n"/>
         </layout>
     </appender>

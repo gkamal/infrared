@@ -52,6 +52,7 @@ import net.sf.infrared.base.model.StatisticsSnapshot;
 import net.sf.infrared.base.util.LoggingFactory;
 import net.sf.infrared.base.util.Tree;
 import net.sf.infrared.collector.ApplicationStatisticsDao;
+
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;

@@ -6,7 +6,6 @@
         <groupId>net.sf.infrared</groupId>
         <artifactId>infrared-parent</artifactId>
         <version>2.6-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <name>aspects</name>
@@ -28,7 +27,7 @@
         <dependency>
             <groupId>aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.5.2a</version>
+            <version>1.5.4</version>
         </dependency>
         <dependency>
             <groupId>aspectwerkz</groupId>

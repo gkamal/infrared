@@ -1,0 +1,139 @@
+/*
+ *
+ * Copyright 2005 Tavant Technologies and Contributors
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ *
+ *
+ * Original Author:  sreejith.unnikrishnan (Tavant Technologies)
+ * Contributor(s):   -; 
+ *					
+ */
+
+/* CSS Document */
+.menuDown {
+	background-color: #CAE4F6;
+	font-weight: bold;
+	color: #000000;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+	letter-spacing: 1px;
+	border-top: 1px solid #999999;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	border-left: 1px solid #999999;
+}
+
+.menuUp {
+	font-weight: bold;
+	color: #000000;
+	background-color: #7BAFD3;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+	letter-spacing: 1px;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	border-left: 1px solid #CCCCCC;
+}
+
+.subMenuDown {
+	background-color: #FAF0E6;
+	font-weight: bold;
+	color: #000000;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+	letter-spacing: 1px;
+	border-top: 1px solid #999999;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	border-left: 1px solid #999999;
+}
+
+.subMenuUp {
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #4C8EB9;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+	letter-spacing: 1px;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	border-left: 1px solid #CCCCCC;
+}
+
+a.menu:link {
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	letter-spacing: 1px;
+	font-variant: normal;
+	line-height: 15px;
+}
+
+a.menu:visited {
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	letter-spacing: 1px;
+	font-variant: normal;
+	line-height: 15px;
+}
+
+a.menu:hover {
+	font-weight: bold;
+	color: #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	letter-spacing: 1px;
+	text-decoration: underline;
+	font-variant: normal;
+	line-height: 15px;
+}
+
+a.menu:active {
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	letter-spacing: 1px;
+	font-variant: normal;
+	line-height: 15px;
+}

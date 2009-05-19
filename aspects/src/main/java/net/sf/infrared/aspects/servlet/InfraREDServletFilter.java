@@ -22,6 +22,7 @@
 package net.sf.infrared.aspects.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -35,6 +36,7 @@ import net.sf.infrared.agent.MonitorFactory;
 import net.sf.infrared.base.model.ExecutionContext;
 import net.sf.infrared.base.model.ExecutionTimer;
 import net.sf.infrared.base.util.LoggingFactory;
+
 import org.apache.log4j.Logger;
 
 /**

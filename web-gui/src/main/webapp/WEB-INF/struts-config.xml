@@ -1,0 +1,87 @@
+<!--
+	*
+	* Copyright 2005 Tavant Technologies and Contributors
+	* 
+	* Licensed under the Apache License, Version 2.0 (the "License")
+	* you may not use this file except in compliance with the License.
+	* You may obtain a copy of the License at
+	*
+	*     http://www.apache.org/licenses/LICENSE-2.0
+	*
+	* Unless required by applicable law or agreed to in writing, software
+	* distributed under the License is distributed on an "AS IS" BASIS,
+	* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	* See the License for the specific language governing permissions and
+	* limitations under the License.
+	*
+	*
+	*
+	* Original Author:  kaushal.kumar (Tavant Technologies)
+	* Contributor(s):   -;
+	*
+-->
+
+<!DOCTYPE struts-config PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+	"http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd" > 
+
+<struts-config>
+	<!-- Form Bean Definitions -->
+	<form-beans>
+		<form-bean name="aggregateApiTimeFormBean"
+			type="net.sf.infrared.web.formbean.AggrExecTimeFormBean" />
+		<form-bean name="sqlStatisticsFormBean"
+			type="net.sf.infrared.web.formbean.SqlStatisticsFormBean" />
+		<form-bean name="layerTimeBean"
+			type="net.sf.infrared.web.formbean.LayerTimeBean" />
+		<form-bean name="configureBean"
+			type="net.sf.infrared.web.formbean.ConfigureFormBean" />
+	</form-beans>
+
+	<!-- Global forwards -->
+	<!-- add global fwds here, if required -->
+
+	<!--  Action Mapping Definitions  -->
+	<action-mappings>
+
+		<action path="/perfData_summaryAction"
+			type="net.sf.infrared.web.action.PerfDataSummaryAction"
+			name="configureBean"
+			scope="session" validate="false">
+			<forward name="continue" path="/perfData_summary.jsp" />
+		</action>
+
+		<action path="/perfData_layerSummaryAction"
+			type="net.sf.infrared.web.action.PerfDataLayerSummaryAction"
+			scope="request" validate="false">
+			<forward name="continue" path="/perfData_layerSummary.jsp" />
+			<forward name="sql" path="/layerSqlStatistics.jsp" />
+		</action>
+
+		<action path="/perfData_apiSumm_callTracesAction"
+			type="net.sf.infrared.web.action.PerfDataCallTracesAction"
+			scope="request" validate="false">
+			<forward name="repeat" path="/perfData_apiSumm_callTraces.jsp" />
+		</action>
+
+		<action path="/perfData_lastInvTrees"
+			type="net.sf.infrared.web.action.PerfDataLastInvocationCallSeq"
+			scope="request" validate="false">
+			<forward name="continue" path="/perfData_lastInvTrees.jsp" />
+		</action>
+
+		<action path="/configureAction"
+			type="net.sf.infrared.web.action.ConfigureAction"
+			name="configureBean" scope="session" validate="false">
+			<forward name="continue" path="/configure.jsp" />
+		</action>
+
+		<action path="/exportToExcel"
+			type="net.sf.infrared.web.action.ExportSummaryReportToExcel"
+			scope="request" validate="false" />
+
+	</action-mappings>
+	<!-- message resources -->
+	<!--message-resources parameter="ApplicationResources" null="false" /-->
+</struts-config>
+

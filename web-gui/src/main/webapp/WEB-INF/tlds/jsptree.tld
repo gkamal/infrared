@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+ *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ *
+ *
+ * Original Author:  Vladislav Kamensky;
+ * Contributor(s):   -;
+ *
+-->
+
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+                      "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<!--
+ Represents taglib definition for the JSPTree (http://jsptree.sourceforge.net).
+
+ @author Vladislav Kamensky
+ -->
+<taglib>
+    <tlibversion>1.0</tlibversion>
+    <jspversion>1.1</jspversion>
+    <shortname>jspt</shortname>
+    <uri>http://jsptree.sourceforge.net/jsptree.tld</uri>
+    <info>JSP Tree Tag Library</info>
+    <tag>
+        <name>JSPTree</name>
+        <tagclass>net.sf.jsptree.JSPTreeTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>A JSP Tree Tag</info>
+        <!--
+        Specifies name of the tree.
+        -->
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!--
+        Specifies tree factory for the tree. It should java reference to a class, which implements
+        net.sf.jsptree.tree.TreeFactory interface. Do not try to specify String value here.
+        -->
+        <attribute>
+            <name>treeFactory</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!--
+        Specifies path to the templates that are referenced by skin (renderer).
+          -->
+        <attribute>
+            <name>templatePath</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!-- Struts action -->
+        <attribute>
+            <name>stateManagerAction</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!--
+          Specifies path to an XML document, which describes tree structure. This XML document has to
+          conform to the following definition: xml_jsp_tree.dtd.
+          Note: if "xtree" attribute is specified there is no need to specify "treeFactory" one, since
+          in this case the net.sf.jsptree.tree.XMLTreeFactory will be set by default.
+          -->
+        <attribute>
+            <name>xtree</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!--if this attribute is set to "true", then tree structure will be stored
+        in the ServletContext and thus will be shared between multiple concurrent
+        sessions. This can be used when tree structure is not changed during application
+        life cycle. Note, that nodes' states like "opened" and "selected" ones will not be
+        shared between concurrent sessions anyway.-->
+        <attribute>
+            <name>shareTreeStructure</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <!--
+        Indicates at which level tree's structure has to be shown. For example, sometimes it is convenient
+        to hide root node.
+        -->
+        <attribute>
+            <name>startAtDepth</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>expandMode</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <!--
+           Specifies path to the image directory.
+          -->
+        <attribute>
+            <name>imagesPath</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!--
+          Specifies skin (renderer) for the tree. It should be a fully qualified name of a class,
+          which implements net.sf.jsptree.skin.Skin interface. Each skin is able to use as many templates
+          as it wants. All templates are to be put into "templatePath" directory.
+          Note: there are several default skins that you can use:
+          "net.sf.jsptree.skin.MenuTemplateSkin"
+          "net.sf.jsptree.skin.DefaultTemplateSkin"
+          "net.sf.jsptree.skin.FolderTemplateSkin"
+          -->
+        <attribute>
+            <name>skin</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!--fully-qualified name of a custom Comparator. This comparator
+        will be used for sorting nodes in the tree-->
+        <attribute>
+            <name>comparator</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>

@@ -32,12 +32,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import org.apache.log4j.Logger;
-
 import net.sf.infrared.base.model.ApplicationStatistics;
 import net.sf.infrared.base.model.StatisticsSnapshot;
 import net.sf.infrared.base.util.LoggingFactory;
 import net.sf.infrared.collector.impl.persistence.SpringContext;
+
+import org.apache.log4j.Logger;
 
 public class StatisticsRepository {
     // map of names -> ApplicationStatistics, collected since the collector started
