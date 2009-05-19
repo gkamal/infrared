@@ -11,8 +11,7 @@
     <name>web-gui</name>
     <groupId>net.sf.infrared</groupId>
     <artifactId>infrared-web-gui</artifactId>
-     <packaging>war</packaging>    
-    <version>2.6-SNAPSHOT</version>
+    <packaging>war</packaging>    
 
     <dependencies>
         <dependency>

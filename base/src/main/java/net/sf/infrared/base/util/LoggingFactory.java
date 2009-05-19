@@ -31,7 +31,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
 import org.apache.log4j.spi.LoggerRepository;
 import org.apache.log4j.spi.LoggingEvent;
-import org.apache.log4j.xml.DOMConfigurator;
 
 /**
  * LoggingFactory implementation
@@ -50,28 +49,28 @@ public class LoggingFactory {
 
     private static URL log4jUrl = null;
     
-    private static boolean isLoggingConfigured = false;
+    private static boolean isLoggingConfigured = true;
 
     private static boolean isUsingDefault = false;
     
-    static {
-        try {
-            log4jUrl = Thread.currentThread().getContextClassLoader().getResource(LOG4J_CONF);
-            if (log4jUrl == null) {
-                log4jUrl = Thread.currentThread().getContextClassLoader().getResource(DEFAULT_CONF);
-                isUsingDefault = true;
-            }
-            try {
-                Class.forName("net.sf.infrared.org.apache.log4j.LogManager");
-            } catch (ClassNotFoundException ignored) {
-            }
-            DOMConfigurator.configure(log4jUrl);
-            isLoggingConfigured = true;
-        } catch (RuntimeException ex) {
-            System.out.println("[InfraRED] Problems configuring logging system");
-            ex.printStackTrace();
-        }
-    }
+//    static {
+//        try {
+//            log4jUrl = Thread.currentThread().getContextClassLoader().getResource(LOG4J_CONF);
+//            if (log4jUrl == null) {
+//                log4jUrl = Thread.currentThread().getContextClassLoader().getResource(DEFAULT_CONF);
+//                isUsingDefault = true;
+//            }
+//            try {
+//                Class.forName("net.sf.infrared.org.apache.log4j.LogManager");
+//            } catch (ClassNotFoundException ignored) {
+//            }
+//            DOMConfigurator.configure(log4jUrl);
+//            isLoggingConfigured = true;
+//        } catch (RuntimeException ex) {
+//            System.out.println("[InfraRED] Problems configuring logging system");
+//            ex.printStackTrace();
+//        }
+//    }
 
     public static Logger getLogger(Class clazz) {
         Logger wrapper = new LoggerDecorator(Logger.getLogger(clazz));
@@ -96,11 +95,11 @@ public class LoggingFactory {
     }
     
     public static boolean isDebugLoggingEnabled() {
-        return isInfoLoggingEnabled() || Boolean.getBoolean(LoggingFactory.DEBUG_KEY);
+        return true;//isInfoLoggingEnabled() || Boolean.getBoolean(LoggingFactory.DEBUG_KEY);
     }
 
     public static boolean isInfoLoggingEnabled() {
-        return Boolean.getBoolean(LoggingFactory.INFO_KEY);
+        return true;//Boolean.getBoolean(LoggingFactory.INFO_KEY);
     }
 }
 

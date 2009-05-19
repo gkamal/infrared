@@ -40,7 +40,9 @@ public abstract aspect AbstractApiAspect {
     
     public abstract pointcut apiExecution();
 
-    public abstract String getLayer();
+    public String getLayer() {
+    	return "UnClassified";
+    }
     
     Object around(): apiExecution() {
         MonitorFacade facade = MonitorFactory.getFacade();

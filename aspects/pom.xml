@@ -11,7 +11,6 @@
     <name>aspects</name>
     <groupId>net.sf.infrared</groupId>
     <artifactId>infrared-aspects</artifactId>
-    <version>2.6-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

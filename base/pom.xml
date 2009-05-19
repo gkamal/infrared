@@ -11,7 +11,6 @@
     <name>base</name>
     <groupId>net.sf.infrared</groupId>
     <artifactId>infrared-base</artifactId>    
-    <version>2.6-SNAPSHOT</version>
 
     <dependencies>
         <!-- Once we move to Jdk 1.5 we can safely remove it  -->
