@@ -1,9 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.sf.infrared</groupId>
     <artifactId>infrared-parent</artifactId>
-    <version>2.6.1-ALPHA</version>
+    <version>2.6-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -189,11 +190,11 @@
         <url>https://sourceforge.net/tracker/?group_id=92904</url>
     </issueManagement>
     <scm>
-        <connection>scm:svn:https://infrared.svn.sourceforge.net/svnroot/infrared/infrared2/app/tags/RELEASE-2.6.1-ALPHA</connection>
+        <connection>scm:svn:https://infrared.svn.sourceforge.net/svnroot/infrared/infrared2/app/trunk/</connection>
         <developerConnection>
-            scm:svn:https://infrared.svn.sourceforge.net/svnroot/infrared/infrared2/app/tags/RELEASE-2.6.1-ALPHA
+            scm:svn:https://infrared.svn.sourceforge.net/svnroot/infrared/infrared2/app/trunk/
         </developerConnection>
-        <url>http://infrared.svn.sourceforge.net/viewvc/infrared/infrared2/app/tags/RELEASE-2.6.1-ALPHA</url>
+        <url>http://infrared.svn.sourceforge.net/viewvc/infrared/infrared2/app/trunk/</url>
     </scm>
     <mailingLists>
         <mailingList>

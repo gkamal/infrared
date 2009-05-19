@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <!-- Commented for now as it generates lots of reports. As for now plugin might be used independently
     till migration is complete. So dot have dependency on parent -->
@@ -11,7 +12,7 @@
     <groupId>net.sf.infrared</groupId>
     <artifactId>maven-infrared-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>2.6.1-ALPHA</version>
+    <version>1.0-SNAPSHOT</version>
     <name>maven-infrared-plugin Maven Mojo</name>
     <url>http://maven.apache.org</url>
     <dependencies>
@@ -57,12 +58,12 @@
 
     <scm>
         <connection>
-            scm:svn:https://infrared.svn.sourceforge.net/svnroot/infrared/infrared2/app/tags/RELEASE-2.6.1-ALPHA/tools/maven-infrared-plugin
+            scm:svn:https://infrared.svn.sourceforge.net/svnroot/infrared/infrared2/app/trunk/tools/maven-infrared-plugin/
         </connection>
         <developerConnection>
-            scm:svn:https://infrared.svn.sourceforge.net/svnroot/infrared/infrared2/app/tags/RELEASE-2.6.1-ALPHA/tools/maven-infrared-plugin
+            scm:svn:https://infrared.svn.sourceforge.net/svnroot/infrared/infrared2/app/trunk/tools/maven-infrared-plugin/
         </developerConnection>
-        <url>http://infrared.svn.sourceforge.net/viewvc/infrared/infrared2/app/tags/RELEASE-2.6.1-ALPHA/tools/maven-infrared-plugin</url>
+        <url>http://infrared.svn.sourceforge.net/viewvc/infrared/infrared2/app/trunk/tools/maven-infrared-plugin/</url>
     </scm>
 
     <build>
