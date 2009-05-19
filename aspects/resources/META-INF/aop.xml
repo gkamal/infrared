@@ -1,0 +1,12 @@
+<aspectj>
+
+	<aspects>
+		<aspect name="net.sf.infrared.aspects.aj.JdbcAspect" />
+		<aspect name="net.sf.infrared.aspects.aj.Hibernate3AjAspect" />
+		<aspect name="net.sf.infrared.aspects.aj.WebAspect" />
+	</aspects>
+
+	<weaver options="-verbose">
+	</weaver>
+
+</aspectj>
