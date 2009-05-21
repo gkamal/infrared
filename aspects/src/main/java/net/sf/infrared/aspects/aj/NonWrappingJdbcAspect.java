@@ -15,33 +15,33 @@
  * 
  *
  *
- * Original Author:  binil.thomas (Tavant Technologies)
+ * Original Author:  prashant.nair (Tavant Technologies)
  * Contributor(s):   -;
  *
  */
 
 package net.sf.infrared.aspects.aj;
 
-import net.sf.infrared.aspects.api.ApiContext;
-import net.sf.infrared.base.model.ExecutionTimer;
-import net.sf.infrared.agent.MonitorFactory;
-import net.sf.infrared.agent.MonitorFacade;
-import net.sf.infrared.agent.MonitorConfig;
-import net.sf.infrared.agent.StatisticsCollector;
-import net.sf.infrared.aspects.jdbc.SqlContext;
-import net.sf.infrared.aspects.jdbc.SqlPrepareContext;
-import net.sf.infrared.aspects.jdbc.SqlExecuteContext;
-import net.sf.infrared.aspects.jdbc.p6spy.InfraREDP6Factory;
-import net.sf.infrared.aspects.jdbc.SqlContextManager;
-import net.sf.infrared.aspects.jdbc.SqlMemory;
-
 import java.sql.Connection;
-import java.sql.Statement;
 import java.sql.PreparedStatement;
-import java.sql.CallableStatement;
 import java.sql.ResultSet;
-import java.util.Map;
-import java.util.WeakHashMap;
+
+import net.sf.infrared.agent.MonitorConfig;
+import net.sf.infrared.agent.MonitorFacade;
+import net.sf.infrared.agent.MonitorFactory;
+import net.sf.infrared.agent.StatisticsCollector;
+import net.sf.infrared.aspects.api.ApiContext;
+import net.sf.infrared.aspects.jdbc.SqlContextManager;
+import net.sf.infrared.aspects.jdbc.SqlExecuteContext;
+import net.sf.infrared.aspects.jdbc.SqlMemory;
+import net.sf.infrared.aspects.jdbc.SqlPrepareContext;
+import net.sf.infrared.aspects.jdbc.p6spy.InfraREDP6Factory;
+import net.sf.infrared.base.model.ExecutionTimer;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 
 /**
  * An aspect implementation which intercepts JDBC calls without wrapping using
@@ -49,54 +49,60 @@ import java.util.WeakHashMap;
  * This was implemented as a solution for bug# 1423202 (casts to driver-specific
  * interfaces fail).
  */
-public aspect NonWrappingJdbcAspect {
+@Aspect
+public class NonWrappingJdbcAspect {
     private static SqlContextManager ctxMgr = new SqlContextManager();
 
     private static SqlMemory sqlMem = new SqlMemory();
 
-    pointcut simpleSqlExecution(String sql):
-        execution( public * Statement+.execute*(String, ..) ) && args(sql, ..);
+    @Pointcut("execution( public * java.sql.Statement+.execute*(String, ..) ) && args(sql, ..)")
+    public void simpleSqlExecution(String sql){}
     
-    pointcut statementOrCallPreparation():
-        ( execution( public PreparedStatement Connection+.prepareStatement(String, ..) ) 
-       || execution( public CallableStatement Connection+.prepareCall(String, ..) ) );    
-									    									
-    pointcut statementOrCallExecution(PreparedStatement ps):
-          ( execution( public * PreparedStatement+.execute*() ) 
-         || execution( public * CallableStatement+.execute*() ) )
-       && target(ps);
+    @Pointcut("( execution( public java.sql.PreparedStatement java.sql.Connection+.prepareStatement(String, ..) )  " +
+    		"|| execution( public java.sql.CallableStatement java.sql.Connection+.prepareCall(String, ..) ) )")
+    public void statementOrCallPreparation(){}    
+	
+    @Pointcut(" ( execution( public * java.sql.PreparedStatement+.execute*() ) " +
+    		"|| execution( public * java.sql.CallableStatement+.execute*() ) )  " +
+    		"&& target(ps)")
+    public void statementOrCallExecution(PreparedStatement ps){}
+         
     
-    public pointcut firstStatementOrCallPreparation(String sql) : 
-         statementOrCallPreparation() && !cflowbelow(statementOrCallPreparation()) && args(sql);
+    @Pointcut("statementOrCallPreparation() && !cflowbelow(statementOrCallPreparation()) && args(sql)")
+    public void firstStatementOrCallPreparation(String sql) {} 
          
-    public pointcut commit():
-         execution( public void Connection+.commit() );     
+    
+    @Pointcut("execution( public void java.sql.Connection+.commit() )")
+    public void commit(){}
+              
+    @Pointcut("execution( public void java.sql.Connection+.rollback() )")     
+    public void rollback(){}
          
-    public pointcut rollback():
-         execution( public void Connection+.rollback() );
-         
-    public pointcut iterateOverResultSet():
-         execution( public boolean ResultSet+.next() );                        
-    		
-    Object around(String sql) : simpleSqlExecution(sql) {      
+    @Pointcut("execution( public boolean java.sql.ResultSet+.next() )")
+    public void iterateOverResultSet(){}
+                                 
+    
+    @Around("simpleSqlExecution(sql)")
+    public Object aroundSimpleSqlExecution(ProceedingJoinPoint proceedingJoinPoint,String sql) throws Throwable {      
         MonitorFacade facade = MonitorFactory.getFacade();
         if(! isJDBCMonitoringEnabled(facade) ) {
-            return proceed(sql);
+            return proceedingJoinPoint.proceed();
     	}
         SqlExecuteContext ctx = ctxMgr.getExecuteContext(sql);
         ExecutionTimer timer = new ExecutionTimer(ctx);
         StatisticsCollector collector = facade.recordExecutionBegin(timer);
         try {
-            return proceed(sql);
+            return proceedingJoinPoint.proceed();
         } finally {
             facade.recordExecutionEnd(timer, collector);
         }        
     }
 
-    Object around(String sql) : firstStatementOrCallPreparation(sql) {              
+    @Around("firstStatementOrCallPreparation(sql)")
+    public Object aroundFirstStatementOrCallPreparation(ProceedingJoinPoint proceedingJoinPoint,String sql) throws Throwable  {              
         MonitorFacade facade = MonitorFactory.getFacade();
         if(! isJDBCMonitoringEnabled(facade) ) {
-            Object ps = proceed(sql);
+            Object ps = proceedingJoinPoint.proceed();
             sqlMem.memorizeSql(sql, ps);
             return ps;
     	}
@@ -106,7 +112,7 @@ public aspect NonWrappingJdbcAspect {
         StatisticsCollector collector = facade.recordExecutionBegin(timer);
         Object ps = null;
         try {
-            ps = proceed(sql);            
+            ps = proceedingJoinPoint.proceed();            
             return ps;
         } finally {
             facade.recordExecutionEnd(timer, collector);
@@ -116,24 +122,25 @@ public aspect NonWrappingJdbcAspect {
         }  
     }
 
-    Object around(PreparedStatement ps) : statementOrCallExecution(ps) {
+    @Around("statementOrCallExecution(ps)")
+    public Object aroundStatementOrCallExecution(ProceedingJoinPoint proceedingJoinPoint,PreparedStatement ps) throws Throwable  {
         MonitorFacade facade = MonitorFactory.getFacade();
         if(! isJDBCMonitoringEnabled(facade) ) {
-            return proceed(ps);
+            return proceedingJoinPoint.proceed();
     	}
 
         String sql = sqlMem.recollectSql(ps);
         if (sql == null) {
             // we somehow missed recording the SQL; this is as good (or bad) as
             // having the JDBC monitoring turned off for this execution.
-            return proceed(ps); 
+            return proceedingJoinPoint.proceed(); 
         }
         
         SqlExecuteContext ctx = ctxMgr.getExecuteContext(sql);
         ExecutionTimer timer = new ExecutionTimer(ctx);
         StatisticsCollector collector = facade.recordExecutionBegin(timer);
         try {            
-            return proceed(ps);
+            return proceedingJoinPoint.proceed();
         } finally {
             facade.recordExecutionEnd(timer, collector);
         }
@@ -144,10 +151,11 @@ public aspect NonWrappingJdbcAspect {
     // @TODO: The following advices commit, rollback and next all look the same - except for their
     // contexts; can these be folded into some common code??
     //
-    Object around(): commit() {
+    @Around("commit()")
+    public Object aroundCommit(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
         MonitorFacade facade = MonitorFactory.getFacade();
 		if(! isJDBCMonitoringEnabled(facade) ) {
-            return proceed();            
+            return proceedingJoinPoint.proceed();            
     	}
         
         ApiContext ctx = new ApiContext(Connection.class.getName(), "commit", "JDBC");
@@ -155,16 +163,17 @@ public aspect NonWrappingJdbcAspect {
         StatisticsCollector collector = facade.recordExecutionBegin(timer);
 
         try {
-            return proceed();            
+            return proceedingJoinPoint.proceed();            
         } finally {
             facade.recordExecutionEnd(timer, collector);            
         }  
     }
     
-    Object around(): rollback() {
+    @Around("rollback()")
+    public Object aroundRollback(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         MonitorFacade facade = MonitorFactory.getFacade();
 		if(! isJDBCMonitoringEnabled(facade) ) {
-            return proceed();            
+            return proceedingJoinPoint.proceed();            
     	}
         
         ApiContext ctx = new ApiContext(Connection.class.getName(), "rollback", "JDBC");
@@ -172,16 +181,17 @@ public aspect NonWrappingJdbcAspect {
         StatisticsCollector collector = facade.recordExecutionBegin(timer);
 
         try {
-            return proceed();            
+            return proceedingJoinPoint.proceed();            
         } finally {
             facade.recordExecutionEnd(timer, collector);            
         }  
     }
     
-    Object around(): iterateOverResultSet() {
+    @Around("iterateOverResultSet()")
+    public Object aroundIterateOverResultSet(ProceedingJoinPoint proceedingJoinPoint) throws Throwable  {
         MonitorFacade facade = MonitorFactory.getFacade();
 		if(! isJDBCMonitoringEnabled(facade) ) {
-            return proceed();            
+            return proceedingJoinPoint.proceed();            
     	}
         
         ApiContext apiCtx = new ApiContext(ResultSet.class.getName(), "next", "JDBC");
@@ -189,7 +199,7 @@ public aspect NonWrappingJdbcAspect {
         StatisticsCollector collector = facade.recordExecutionBegin(timer);
 
         try {
-            return proceed();            
+            return proceedingJoinPoint.proceed();            
         } finally {
             facade.recordExecutionEnd(timer, collector);            
         }  

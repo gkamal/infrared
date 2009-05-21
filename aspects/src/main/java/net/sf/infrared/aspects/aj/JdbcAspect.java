@@ -23,31 +23,35 @@
 package net.sf.infrared.aspects.aj;
 
 import java.sql.Connection;
-import java.sql.Driver;
-import javax.sql.DataSource;
 import java.sql.SQLException;
 
-import org.apache.log4j.Logger;
 import net.sf.infrared.aspects.jdbc.p6spy.InfraREDP6Connection;
 import net.sf.infrared.aspects.jdbc.p6spy.InfraREDP6Factory;
-import net.sf.infrared.base.util.LoggingFactory;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 
 /**
  * An AspectJ aspect to wrap a java.sql.Connection with the InfraREDP6Connection
  */
-public aspect JdbcAspect {
+@Aspect
+public class JdbcAspect {
 
     private InfraREDP6Factory factory = new InfraREDP6Factory();
 	
-    public pointcut getConnection() : execution(public Connection+ Driver+.connect(..)) || 
-        execution(public Connection+ DataSource+.getConnection(..));
+    @Pointcut("execution(public java.sql.Connection+ java.sql.Driver+.connect(..)) || execution(public java.sql.Connection+ javax.sql.DataSource+.getConnection(..))")
+    public void getConnection() {}
         
-    public pointcut firstCallToGetConnection() : getConnection() && !cflowbelow(getConnection());
+    @Pointcut("getConnection()") // && !cflowbelow(getConnection())
+    public void firstCallToGetConnection() {}
 
     // I would have loved to add a debug log here, but looks like AspectJ
     // and JarJar does not work together nicely. Need to look at this again.
-    Object around() : firstCallToGetConnection() {
-        Connection con = (Connection) proceed();
+    @Around("firstCallToGetConnection()")
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable  {
+        Connection con = (Connection) joinPoint.proceed();
         if (!(con instanceof InfraREDP6Connection)) {
             try {                
                 con = factory.getConnection(con);
@@ -57,3 +61,4 @@ public aspect JdbcAspect {
         return con;	
     }
 }
+

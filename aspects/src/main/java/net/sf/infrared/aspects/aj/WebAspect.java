@@ -22,18 +22,16 @@
 
 package net.sf.infrared.aspects.aj;
 
-import net.sf.infrared.aspects.aj.InfraREDBaseAspect;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.jsp.JspPage;
-import javax.servlet.Filter;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 
 /**
 * An aspect to instrument all invocations to Servlets
 */
-
-public aspect WebAspect extends InfraREDBaseAspect {
-	public pointcut condition() : execution(public * HttpServlet+.*(..))
-						|| execution (public * Filter+.*(..));
+@Aspect
+public class WebAspect extends InfraREDBaseAspect {
+	@Pointcut("execution(public * javax.servlet.http.HttpServlet+.*(..)) || execution (public * javax.servlet.Filter+.*(..))")
+	public void condition() {}
 
 
 	public String getApiType() {

@@ -1,0 +1,18 @@
+<aspectj>
+
+	<aspects>
+		<concrete-aspect name="net.sf.infrared.aspects.test.RespositoryAspect"
+                               extends="net.sf.infrared.aspects.aj.AbstractApiAspect">
+                <pointcut name="apiExecution" expression="execution(public * infrared.test.repository..*(..))"/>
+        </concrete-aspect>
+		
+	</aspects>
+
+	<weaver>
+		<include within="*..*"/>
+		<exclude within="antlr.*"/>
+		<exclude within="net.sf.infrared..*"/>
+		<exclude within="org.apache.log4j..*"/>
+	</weaver> 
+
+</aspectj>

@@ -95,11 +95,11 @@ public class LoggingFactory {
     }
     
     public static boolean isDebugLoggingEnabled() {
-        return true;//isInfoLoggingEnabled() || Boolean.getBoolean(LoggingFactory.DEBUG_KEY);
+        return isInfoLoggingEnabled() || Boolean.getBoolean(LoggingFactory.DEBUG_KEY);
     }
 
     public static boolean isInfoLoggingEnabled() {
-        return true;//Boolean.getBoolean(LoggingFactory.INFO_KEY);
+        return Boolean.getBoolean(LoggingFactory.INFO_KEY);
     }
 }
 

@@ -26,20 +26,26 @@ import net.sf.infrared.agent.MonitorConfig;
 import net.sf.infrared.agent.MonitorFacade;
 import net.sf.infrared.agent.MonitorFactory;
 import net.sf.infrared.agent.StatisticsCollector;
-import net.sf.infrared.base.model.ExecutionContext;
-import net.sf.infrared.base.model.ExecutionTimer;
 import net.sf.infrared.aspects.hibernate.HibernateQueryContext;
- 
- 
-public aspect Hibernate3AjAspect{
- 	
-	public pointcut hib3Query(org.hibernate.Query query) : 
- 				execution(public java.util.List org.hibernate.Query+.list()) && target(query);
- 	
- 	public pointcut hib3Find(String queryString) : 
- 				execution(public * org.hibernate.Session+.find()) && args(queryString, ..);	
+import net.sf.infrared.base.model.ExecutionTimer;
 
-	Object around(org.hibernate.Query query) : hib3Query(query){
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+ 
+@Aspect 
+public class Hibernate3AjAspect{
+ 	
+	@Pointcut("execution(public java.util.List org.hibernate.Query+.list()) && target(query)")
+	public void hib3Query(org.hibernate.Query query){} 
+ 				
+ 	
+	@Pointcut("execution(public * org.hibernate.Session+.find()) && args(queryString, ..)")
+ 	public void hib3Find(String queryString){} 
+ 					
+	@Around("hib3Query(query)")
+	public Object around(ProceedingJoinPoint joinPoint, org.hibernate.Query query) throws Throwable {
   		MonitorFacade facade = getFacade();
   		
   		if(isMonitoringEnabled(facade)){
@@ -47,18 +53,19 @@ public aspect Hibernate3AjAspect{
 	        ExecutionTimer timer = new ExecutionTimer(ctx);
         	StatisticsCollector collector = facade.recordExecutionBegin(timer);
         	try {
-            	return proceed(query);
+            	return joinPoint.proceed();
         	} 
         	finally {
             	facade.recordExecutionEnd(timer, collector);
         	}  			
   		}
   		else{
-  			return proceed(query);
+  			return joinPoint.proceed();
   		}		
 	}
 	
-	Object around(String queryString) : hib3Find(queryString){
+	@Around("hib3Find(queryString)")
+	public Object around(ProceedingJoinPoint joinPoint, String queryString) throws Throwable  {
   		MonitorFacade facade = getFacade();
   		
   		if(isMonitoringEnabled(facade)){
@@ -66,14 +73,14 @@ public aspect Hibernate3AjAspect{
 	        ExecutionTimer timer = new ExecutionTimer(ctx);
         	StatisticsCollector collector = facade.recordExecutionBegin(timer);
         	try {
-            	return proceed(queryString);
+            	return joinPoint.proceed();
         	} 
         	finally {
             	facade.recordExecutionEnd(timer, collector);
         	}  			
   		}
   		else{
-  			return proceed(queryString);
+  			return joinPoint.proceed();
   		}
 	}
 	

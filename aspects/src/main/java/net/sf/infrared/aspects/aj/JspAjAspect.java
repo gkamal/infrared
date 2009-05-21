@@ -15,44 +15,41 @@
  * 
  *
  *
- * Original Author:  binil.thomas (Tavant Technologies)
- * Contributor(s):   prashant.nair;
+ * Original Author:  prashant.nair (Tavant Technologies)
+ * Contributor(s):   -;
  *
  */
 
 package net.sf.infrared.aspects.aj;
 
+
 import net.sf.infrared.agent.MonitorConfig;
 import net.sf.infrared.agent.MonitorFacade;
 import net.sf.infrared.agent.MonitorFactory;
-import net.sf.infrared.base.model.ExecutionContext;
+import net.sf.infrared.aspects.jsp.JspContext;
 import net.sf.infrared.base.model.ExecutionTimer;
-import net.sf.infrared.aspects.api.ApiContext;
 
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 
 /**
- * Base Aspect for AspectJ that is executed for all pointcuts
- */
-public abstract aspect InfraREDBaseAspect {
-    /**
-     * The condition based on which monitoring is performed.
-     */
-    public abstract pointcut condition();
+* An aspect to instrument all invocations to JSP pages 
+*/
+@Aspect
+public class JspAjAspect {
+	@Pointcut("execution(public void javax.servlet.jsp.HttpJspPage+._jspService(javax.servlet.http.HttpServletRequest," +
+			"	javax.servlet.http.HttpServletResponse))")
+	public void condition() {}
 
-    /**
-     * Gets the type (Session Bean/Entity Bean/JDBC etc.) of API.
-     */
-    public abstract String getApiType();
-
-    /**
-    *  Tracks the time taken by a method call and updates the statistics
-    **/
-    Object around() : condition(){
+	@SuppressWarnings("unchecked")
+	@Around("condition()")
+    public Object around(ProceedingJoinPoint thisJoinPointStaticPart) throws Throwable{
       final Class classObj= thisJoinPointStaticPart.getSignature().getDeclaringType();
-	  final String methodName = thisJoinPointStaticPart.getSignature().getName();
-	  final String apiType = getApiType();
+
 	  Object returnVal;
-	  ApiContext ctx = new ApiContext(classObj.getName(), methodName, apiType);
+	  JspContext ctx = new JspContext(classObj);
 
 	  MonitorFacade facade = MonitorFactory.getFacade();
 	  MonitorConfig cfg = facade.getConfiguration();
@@ -61,12 +58,12 @@ public abstract aspect InfraREDBaseAspect {
 	     ExecutionTimer timer = new ExecutionTimer(ctx);
 	     MonitorFactory.getFacade().recordExecutionBegin(timer);
 	     try {
-	         returnVal = proceed();
+	         returnVal = thisJoinPointStaticPart.proceed();
 	     } finally {
 	         MonitorFactory.getFacade().recordExecutionEnd(timer);
 	     }
 	  } else {
-	     returnVal = proceed();
+	     returnVal = thisJoinPointStaticPart.proceed();
 	  }
 	    
 	  return returnVal;

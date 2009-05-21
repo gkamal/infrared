@@ -24,9 +24,9 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>aspectj</groupId>
+            <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.5.4</version>
+            <version>1.6.2</version>
         </dependency>
         <dependency>
             <groupId>p6spy</groupId>
@@ -57,21 +57,10 @@
             <version>${spring-version}</version>
             <optional>true</optional>
         </dependency>
+        <dependency>
+        	<groupId>aspectj</groupId>
+        	<artifactId>aspectjrt</artifactId>
+        	<version>1.5.4</version>
+        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>aspectj-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>

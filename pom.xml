@@ -13,6 +13,7 @@
         <module>aspects</module>
         <module>collector</module>
         <module>web-gui</module>
+        <module>test</module>
         <!--<module>tools/maven-infrared-plugin</module>-->
     </modules>
 

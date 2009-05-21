@@ -165,4 +165,10 @@ public class MonitorFactory {
         MonitorFacade facade = new MonitorFacadeImpl(applicationName, hostName, defaultConfig, false);
         defaultFacade = new MultipleEntryGuard(facade);
     }
+
+    // For testing only
+    public static void setDefaultMonitorFacade(MonitorFacade monitorFacade) {
+    	defaultFacade = monitorFacade;
+    }
+    
 }

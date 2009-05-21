@@ -1,0 +1,22 @@
+<projectDescription>
+  <name>infrared-test</name>
+  <comment>InfraRED: J2EE Performance Monitoring Tool</comment>
+  <projects>
+    <project>infrared-agent</project>
+    <project>infrared-aspects</project>
+    <project>infrared-base</project>
+    <project>infrared-collector</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+    <buildCommand>
+      <name>org.maven.ide.eclipse.maven2Builder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.maven.ide.eclipse.maven2Nature</nature>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

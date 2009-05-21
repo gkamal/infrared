@@ -22,12 +22,17 @@
 
 package net.sf.infrared.aspects.aj;
 
+import net.sf.infrared.agent.MonitorConfig;
+import net.sf.infrared.agent.MonitorFacade;
+import net.sf.infrared.agent.MonitorFactory;
+import net.sf.infrared.agent.StatisticsCollector;
 import net.sf.infrared.aspects.api.ApiContext;
 import net.sf.infrared.base.model.ExecutionTimer;
-import net.sf.infrared.agent.MonitorFactory;
-import net.sf.infrared.agent.MonitorFacade;
-import net.sf.infrared.agent.MonitorConfig;
-import net.sf.infrared.agent.StatisticsCollector;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 
 /**
  * An abstract aspect implementation which records the execution of a simple
@@ -36,18 +41,22 @@ import net.sf.infrared.agent.StatisticsCollector;
  *
  * @author binil.thomas
  */
-public abstract aspect AbstractApiAspect {
+@Aspect
+public abstract class AbstractApiAspect {
     
-    public abstract pointcut apiExecution();
+	@Pointcut
+    public abstract void apiExecution();
 
     public String getLayer() {
     	return "UnClassified";
     }
     
-    Object around(): apiExecution() {
+    @SuppressWarnings("unchecked")
+	@Around("apiExecution()")
+    public Object around(ProceedingJoinPoint thisJoinPointStaticPart) throws Throwable  {
         MonitorFacade facade = MonitorFactory.getFacade();
     	if(! isMonitoringEnabled(facade) ) {
-            return proceed();            
+            return thisJoinPointStaticPart.proceed();            
     	}
         
         final Class classObj= thisJoinPointStaticPart.getSignature().getDeclaringType();
@@ -57,7 +66,7 @@ public abstract aspect AbstractApiAspect {
 
         StatisticsCollector collector = facade.recordExecutionBegin(timer);
         try {
-            return proceed();            
+            return thisJoinPointStaticPart.proceed();            
         } finally {
             facade.recordExecutionEnd(timer, collector);            
         }  
