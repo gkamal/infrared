@@ -29,15 +29,15 @@ import java.sql.Array;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.Date;
-import java.sql.NClob;
 import java.sql.ParameterMetaData;
 import java.sql.PreparedStatement;
 import java.sql.Ref;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.RowId;
+//import java.sql.NClob;
+//import java.sql.RowId;
+//import java.sql.SQLXML;
 import java.sql.SQLException;
-import java.sql.SQLXML;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -271,89 +271,89 @@ public class InfraREDP6PreparedStatement extends InfraREDP6Statement implements 
         return p6Statement;
     }
 
-	public void setAsciiStream(int parameterIndex, InputStream x)
-			throws SQLException {
-		passThru.setAsciiStream(parameterIndex, x);
-	}
-
-	public void setAsciiStream(int parameterIndex, InputStream x, long length)
-			throws SQLException {
-		passThru.setAsciiStream(parameterIndex, x, length);
-	}
-
-	public void setBinaryStream(int parameterIndex, InputStream x)
-			throws SQLException {
-		passThru.setBinaryStream(parameterIndex, x);
-	}
-
-	public void setBinaryStream(int parameterIndex, InputStream x, long length)
-			throws SQLException {
-		passThru.setBinaryStream(parameterIndex, x, length);
-	}
-
-	public void setBlob(int parameterIndex, InputStream inputStream)
-			throws SQLException {
-		passThru.setBlob(parameterIndex, inputStream);
-	}
-
-	public void setBlob(int parameterIndex, InputStream inputStream, long length)
-			throws SQLException {
-		passThru.setBlob(parameterIndex, inputStream, length);
-	}
-
-	public void setCharacterStream(int parameterIndex, Reader reader)
-			throws SQLException {
-		passThru.setCharacterStream(parameterIndex, reader);
-	}
-
-	public void setCharacterStream(int parameterIndex, Reader reader,
-			long length) throws SQLException {
-		passThru.setCharacterStream(parameterIndex, reader, length);	
-	}
-
-	public void setClob(int parameterIndex, Reader reader) throws SQLException {
-		passThru.setClob(parameterIndex, reader);
-	}
-
-	public void setClob(int parameterIndex, Reader reader, long length)
-			throws SQLException {
-		passThru.setClob(parameterIndex, reader, length);
-	}
-
-	public void setNCharacterStream(int parameterIndex, Reader value)
-			throws SQLException {
-		passThru.setNCharacterStream(parameterIndex, value);
-	}
-
-	public void setNCharacterStream(int parameterIndex, Reader value,
-			long length) throws SQLException {
-		passThru.setNCharacterStream(parameterIndex, value, length);
-	}
-
-	public void setNClob(int parameterIndex, NClob value) throws SQLException {
-		passThru.setNClob(parameterIndex, value);
-	}
-
-	public void setNClob(int parameterIndex, Reader reader) throws SQLException {
-		passThru.setNClob(parameterIndex, reader);
-	}
-
-	public void setNClob(int parameterIndex, Reader reader, long length)
-			throws SQLException {
-		passThru.setNClob(parameterIndex, reader, length);
-	}
-
-	public void setNString(int parameterIndex, String value)
-			throws SQLException {
-		passThru.setNString(parameterIndex, value);
-	}
-
-	public void setRowId(int parameterIndex, RowId x) throws SQLException {
-		passThru.setRowId(parameterIndex, x);
-	}
-
-	public void setSQLXML(int parameterIndex, SQLXML xmlObject)
-			throws SQLException {
-		passThru.setSQLXML(parameterIndex, xmlObject);
-	}
+//	public void setAsciiStream(int parameterIndex, InputStream x)
+//			throws SQLException {
+//		passThru.setAsciiStream(parameterIndex, x);
+//	}
+//
+//	public void setAsciiStream(int parameterIndex, InputStream x, long length)
+//			throws SQLException {
+//		passThru.setAsciiStream(parameterIndex, x, length);
+//	}
+//
+//	public void setBinaryStream(int parameterIndex, InputStream x)
+//			throws SQLException {
+//		passThru.setBinaryStream(parameterIndex, x);
+//	}
+//
+//	public void setBinaryStream(int parameterIndex, InputStream x, long length)
+//			throws SQLException {
+//		passThru.setBinaryStream(parameterIndex, x, length);
+//	}
+//
+//	public void setBlob(int parameterIndex, InputStream inputStream)
+//			throws SQLException {
+//		passThru.setBlob(parameterIndex, inputStream);
+//	}
+//
+//	public void setBlob(int parameterIndex, InputStream inputStream, long length)
+//			throws SQLException {
+//		passThru.setBlob(parameterIndex, inputStream, length);
+//	}
+//
+//	public void setCharacterStream(int parameterIndex, Reader reader)
+//			throws SQLException {
+//		passThru.setCharacterStream(parameterIndex, reader);
+//	}
+//
+//	public void setCharacterStream(int parameterIndex, Reader reader,
+//			long length) throws SQLException {
+//		passThru.setCharacterStream(parameterIndex, reader, length);	
+//	}
+//
+//	public void setClob(int parameterIndex, Reader reader) throws SQLException {
+//		passThru.setClob(parameterIndex, reader);
+//	}
+//
+//	public void setClob(int parameterIndex, Reader reader, long length)
+//			throws SQLException {
+//		passThru.setClob(parameterIndex, reader, length);
+//	}
+//
+//	public void setNCharacterStream(int parameterIndex, Reader value)
+//			throws SQLException {
+//		passThru.setNCharacterStream(parameterIndex, value);
+//	}
+//
+//	public void setNCharacterStream(int parameterIndex, Reader value,
+//			long length) throws SQLException {
+//		passThru.setNCharacterStream(parameterIndex, value, length);
+//	}
+//
+//	public void setNClob(int parameterIndex, NClob value) throws SQLException {
+//		passThru.setNClob(parameterIndex, value);
+//	}
+//
+//	public void setNClob(int parameterIndex, Reader reader) throws SQLException {
+//		passThru.setNClob(parameterIndex, reader);
+//	}
+//
+//	public void setNClob(int parameterIndex, Reader reader, long length)
+//			throws SQLException {
+//		passThru.setNClob(parameterIndex, reader, length);
+//	}
+//
+//	public void setNString(int parameterIndex, String value)
+//			throws SQLException {
+//		passThru.setNString(parameterIndex, value);
+//	}
+//
+//	public void setRowId(int parameterIndex, RowId x) throws SQLException {
+//		passThru.setRowId(parameterIndex, x);
+//	}
+//
+//	public void setSQLXML(int parameterIndex, SQLXML xmlObject)
+//			throws SQLException {
+//		passThru.setSQLXML(parameterIndex, xmlObject);
+//	}
 }

@@ -360,23 +360,23 @@ public class InfraREDP6Statement implements Statement {
         return p6Statement;
     }
 
-	public boolean isClosed() throws SQLException {
-		return passThru.isClosed();
-	}
-
-	public boolean isPoolable() throws SQLException {
-		return passThru.isPoolable();
-	}
-
-	public void setPoolable(boolean poolable) throws SQLException {
-		passThru.setPoolable(poolable);
-	}
-
-	public boolean isWrapperFor(Class arg0) throws SQLException {
-		return passThru.isWrapperFor(arg0);
-	}
-
-	public Object unwrap(Class arg0) throws SQLException {
-		return passThru.unwrap(arg0);
-	}
+//	public boolean isClosed() throws SQLException {
+//		return passThru.isClosed();
+//	}
+//
+//	public boolean isPoolable() throws SQLException {
+//		return passThru.isPoolable();
+//	}
+//
+//	public void setPoolable(boolean poolable) throws SQLException {
+//		passThru.setPoolable(poolable);
+//	}
+//
+//	public boolean isWrapperFor(Class arg0) throws SQLException {
+//		return passThru.isWrapperFor(arg0);
+//	}
+//
+//	public Object unwrap(Class arg0) throws SQLException {
+//		return passThru.unwrap(arg0);
+//	}
 }
