@@ -29,7 +29,7 @@
 <%@ taglib uri="struts/logic" prefix="logic" %>
 <%@ taglib uri="struts/html" prefix="html" %>
 <head>
-<script>
+<script type="text/javascript">
 funtion showSql(sqlid)
 {
   window.open('showSql.jsp?name=sqlname','SqlQuery','height=200,width=400,location=no,resizable=yes,scrollbars=yes,toolbars=no');

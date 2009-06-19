@@ -76,7 +76,9 @@
 %>
 <jsp:useBean id="isInActiveMode" scope="session" type="java.lang.String" />
 
-<html>
+
+<%@page import="net.sf.jsptree.component.JSPTreeComponent"%>
+<%@page import="net.sf.jsptree.WebWriter"%><html>
 <!-- InstanceBegin template="/Templates/tavant_jsp.dwt.jsp" codeOutsideHTMLIsLocked="false" -->
 <head>
 <!-- InstanceBeginEditable name="doctitle" -->
@@ -88,7 +90,7 @@
 <!-- InstanceEndEditable -->
 <link href="common/stylesheets/master.css" rel="stylesheet"
 	type="text/css">
-<script>
+<script type="text/javascript">
 	function showHide(node1,node2)
 	{
 		if(document.getElementById(node1).style.display=='none')
@@ -197,25 +199,39 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td colspan="3">
+		                     <a href="<%=response.encodeURL(expandIconHref)%>"> 
+		                     		<img src="<%=expandIcon%>" width="10" height="10" border="0" />
+		                     </a> 
 					<%
                         String imagePath = request.getContextPath()+"/imgs/tree/menu/blue/";
                         TreeFactory treeFactory = (TreeFactory)session.getAttribute("treeFactory");
                         pageContext.setAttribute("treeFactory", treeFactory);
                         String treeName = "InfraTree";
+                     
+                        try {
+                            JSPTreeComponent a_component = new JSPTreeComponent();
+                            a_component.setContext(getServletContext());
+                            a_component.setRequest(request);
+                            a_component.setRequest(request);
+                            a_component.setResponse(response);
+                            a_component.setName("InfraTree");
+                            a_component.setImagesPath(imagePath);
+                            a_component.setTreeFactory(treeFactory);
+                            a_component.setTemplatePath("/jsptree/template/menu");
+
+                            a_component.setSkin(AbstractSkin.MENU_SKIN);
+                            a_component.setStartAtDepth(0);
+                            //share tree structure between multiple concurrent sessions
+                            a_component.setShareTreeStructure("true");
+
+                            a_component.printContent(new WebWriter(response.getWriter()));
+
+                        } catch (JspTagException jsptagexception) {
+                            throw new ServletException(jsptagexception);
+                        }
                      %> 
-                     <a href="<%=response.encodeURL(expandIconHref)%>"> 
-                     		<img src="<%=expandIcon%>" width="10" height="10" border="0" />
-                     </a> 
-                     <sf:JSPTree
-						name="<%=treeName%>" 
-						treeFactory="treeFactory" 
-						startAtDepth="0"
-						imagesPath="<%=imagePath%>"
-						templatePath="net/sf/jsptree/example/template/menu/"
-						shareTreeStructure="false" expandMode="<%=expandMode%>"
-						skin="<%=AbstractSkin.MENU_SKIN%>"
-					 />
 							</td>
+					</tr>		
                 <%
                     Integer jdbcCount = new Integer(mergedTreeJdbcSummaries.length);
                     Integer sqlCount = new Integer(mergedTreeSqlStatistics.length);

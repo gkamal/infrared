@@ -37,7 +37,7 @@ public class WebConfig {
     public static final String DEFAULT_COLLECTOR_PERSIST_INTERVAL = "600000";
     public static final String DEFAULT_WEB_COLOR_THRESHOLD = "25";
     public static final String DEFAULT_NUM_OF_LAST_INVOCATIONS = "5";
-    public static final String DEFAULT_NUM_OF_SQL_QUERIES = "5";
+    public static final String DEFAULT_NUM_OF_SQL_QUERIES = "500";
     
     public static Logger log = LoggingFactory.getLogger(WebConfig.class);
     private static PropertyUtil propertyUtil;

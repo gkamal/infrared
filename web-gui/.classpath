@@ -1,42 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-  <classpathentry kind="src" path="src/test/java" output="target/test-classes" including="**/*.java"/>
-  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
-  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
-  <classpathentry kind="output" path="target/classes"/>
-  <classpathentry kind="var" path="M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar"/>
-  <classpathentry kind="var" path="M2_REPO/javax/servlet/jstl/1.0/jstl-1.0.jar"/>
-  <classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar" sourcepath="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" sourcepath="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.6/commons-beanutils-1.6.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/3.1/commons-collections-3.1.jar" sourcepath="M2_REPO/commons-collections/commons-collections/3.1/commons-collections-3.1-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-digester/commons-digester/1.7/commons-digester-1.7.jar" sourcepath="M2_REPO/commons-digester/commons-digester/1.7/commons-digester-1.7-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-fileupload/commons-fileupload/1.0/commons-fileupload-1.0.jar" sourcepath="M2_REPO/commons-fileupload/commons-fileupload/1.0/commons-fileupload-1.0-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar" sourcepath="M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar" sourcepath="M2_REPO/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-validator/commons-validator/1.1.4/commons-validator-1.1.4.jar" sourcepath="M2_REPO/commons-validator/commons-validator/1.1.4/commons-validator-1.1.4-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/concurrent/concurrent/1.3.4/concurrent-1.3.4.jar" sourcepath="M2_REPO/concurrent/concurrent/1.3.4/concurrent-1.3.4-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/easymock/easymock/1.2_Java1.3/easymock-1.2_Java1.3.jar" sourcepath="M2_REPO/easymock/easymock/1.2_Java1.3/easymock-1.2_Java1.3-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/geronimo/specs/geronimo-j2ee-management_1.0_spec/1.1/geronimo-j2ee-management_1.0_spec-1.1.jar" sourcepath="M2_REPO/org/apache/geronimo/specs/geronimo-j2ee-management_1.0_spec/1.1/geronimo-j2ee-management_1.0_spec-1.1-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/hsqldb/hsqldb/1.8.0.1/hsqldb-1.8.0.1.jar" sourcepath="M2_REPO/hsqldb/hsqldb/1.8.0.1/hsqldb-1.8.0.1-sources.jar"/>
-  <classpathentry kind="src" path="/infrared-agent"/>
-  <classpathentry kind="src" path="/infrared-aspects"/>
-  <classpathentry kind="src" path="/infrared-base"/>
-  <classpathentry kind="src" path="/infrared-collector"/>
-  <classpathentry kind="var" path="M2_REPO/jsptree/jsptree/1.0-b6/jsptree-1.0-b6.jar"/>
-  <classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar" sourcepath="M2_REPO/junit/junit/3.8.1/junit-3.8.1-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.9/log4j-1.2.9.jar" sourcepath="M2_REPO/log4j/log4j/1.2.9/log4j-1.2.9-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/oro/oro/2.0.7/oro-2.0.7.jar"/>
-  <classpathentry kind="var" path="M2_REPO/p6spy/p6spy/1.3/p6spy-1.3.jar"/>
-  <classpathentry kind="var" path="M2_REPO/poi/poi/2.5.1-final-20040804/poi-2.5.1-final-20040804.jar" sourcepath="M2_REPO/poi/poi/2.5.1-final-20040804/poi-2.5.1-final-20040804-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/2.5.6/spring-aop-2.5.6.jar" sourcepath="M2_REPO/org/springframework/spring-aop/2.5.6/spring-aop-2.5.6-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-beans/2.5.6/spring-beans-2.5.6.jar" sourcepath="M2_REPO/org/springframework/spring-beans/2.5.6/spring-beans-2.5.6-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/2.5.6/spring-context-2.5.6.jar" sourcepath="M2_REPO/org/springframework/spring-context/2.5.6/spring-context-2.5.6-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-core/2.5.6/spring-core-2.5.6.jar" sourcepath="M2_REPO/org/springframework/spring-core/2.5.6/spring-core-2.5.6-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-jdbc/2.5.6/spring-jdbc-2.5.6.jar" sourcepath="M2_REPO/org/springframework/spring-jdbc/2.5.6/spring-jdbc-2.5.6-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-tx/2.5.6/spring-tx-2.5.6.jar" sourcepath="M2_REPO/org/springframework/spring-tx/2.5.6/spring-tx-2.5.6-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/taglibs/standard/1.0.6/standard-1.0.6.jar" sourcepath="M2_REPO/taglibs/standard/1.0.6/standard-1.0.6-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/struts/struts/1.1/struts-1.1.jar"/>
-  <classpathentry kind="var" path="M2_REPO/struts/struts-legacy/1.1/struts-legacy-1.1.jar"/>
-  <classpathentry kind="var" path="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar" sourcepath="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2-sources.jar"/>
-  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" output="target/classes" path="src/main/java"/>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
