@@ -22,6 +22,7 @@
 package net.sf.infrared.aspects.hibernate;
 
 import org.codehaus.aspectwerkz.joinpoint.StaticJoinPoint;
+import org.hibernate.Query;
 
 /**
  *
@@ -29,7 +30,7 @@ import org.codehaus.aspectwerkz.joinpoint.StaticJoinPoint;
  */
 public class Hibernate2Aspect extends HibernateBaseAspect {
    
-    public Object aroundQueryExecution(net.sf.hibernate.Query q, StaticJoinPoint sjp)
+    public Object aroundQueryExecution(Query q, StaticJoinPoint sjp)
             throws Throwable {
         return aroundQueryExecution(q.getQueryString(), sjp);
     }
