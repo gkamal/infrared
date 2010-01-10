@@ -1,33 +1,43 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>net.sf.infrared</groupId>
         <artifactId>infrared-parent</artifactId>
         <version>2.6-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <name>web-gui</name>
+    <name>infraRED Web GUI</name>
     <groupId>net.sf.infrared</groupId>
-    <artifactId>infrared-web-gui</artifactId>
-    <packaging>war</packaging>    
+    <artifactId>infrared-web</artifactId>
+    <version>2.6-SNAPSHOT</version>
+    <packaging>war</packaging>
 
+    
     <dependencies>
         <dependency>
-            <groupId>net.sf.infrared</groupId>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.9</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>infrared-base</artifactId>
             <version>${project.version}</version>
         </dependency>
         
         <dependency>
-            <groupId>net.sf.infrared</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>infrared-collector</artifactId>
             <version>${project.version}</version>
         </dependency>
         
         <dependency>
-            <groupId>net.sf.infrared</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>infrared-aspects</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -63,112 +73,128 @@
         </dependency>
         
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <groupId>geronimo-spec</groupId>
+            <artifactId>geronimo-spec-servlet</artifactId>
+            <version>2.4-rc4</version>
             <scope>provided</scope>
         </dependency>
         
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>2.0</version>
-           <scope>provided</scope>
+            <groupId>geronimo-spec</groupId>
+            <artifactId>geronimo-spec-jsp</artifactId>
+            <version>2.0-rc4</version>
+            <scope>provided</scope>
         </dependency>
         
-       <dependency>
+        <dependency>
             <groupId>jsptree</groupId>
             <artifactId>jsptree</artifactId>
-            <version>1.0-b6</version>
+            <version>1.0</version>
+
         </dependency>
         
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.9</version>
+
         </dependency>
         
         <dependency>
-            <groupId>org.springframework</groupId>
+            <groupId>springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>${spring-version}</version>
+            <version>1.2</version>
+
+
         </dependency>
         
         <dependency>
-            <groupId>org.springframework</groupId>
+            <groupId>springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>${spring-version}</version>
+            <version>1.2</version>
+
         </dependency>
         
         <dependency>
-            <groupId>org.springframework</groupId>
+            <groupId>springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring-version}</version>
+            <version>1.2</version>
+
         </dependency>
         
         <dependency>
-            <groupId>org.springframework</groupId>
+            <groupId>springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${spring-version}</version>
+            <version>1.2</version>
+
         </dependency>
         
         <dependency>
-            <groupId>org.springframework</groupId>
+            <groupId>springframework</groupId>
+            <artifactId>spring-dao</artifactId>
+            <version>1.2</version>
+
+        </dependency>
+        
+        <dependency>
+            <groupId>springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>${spring-version}</version>
+            <version>1.2</version>
+
         </dependency>
         
         <dependency>
             <groupId>struts</groupId>
             <artifactId>struts</artifactId>
             <version>1.1</version>
-            <exclusions>
-              <exclusion>
-                <groupId>javax.sql</groupId>
-                <artifactId>jdbc-stdext</artifactId>
-              </exclusion>
-            </exclusions>
+<exclusions>
+<exclusion>
+<groupId>javax.sql</groupId>
+<artifactId>jdbc-stdext</artifactId>
+</exclusion>
+</exclusions>
         </dependency>
         
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
             <version>1.0.6</version>
+
         </dependency>
         
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.0</version>
+
         </dependency>
         
         <dependency>
             <groupId>hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>1.8.0.1</version>
+
         </dependency>
         
         <dependency>
             <groupId>poi</groupId>
             <artifactId>poi</artifactId>
             <version>2.5.1-final-20040804</version>
+
         </dependency>
+
     </dependencies>
+   
+    <!-- the version property has to be replaced -->
     <build>
-		<plugins>
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty-plugin</artifactId>
-				<configuration>
-					<scanIntervalSeconds>5</scanIntervalSeconds>
-					<connectors>
-						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-						  <port>8090</port>
-						  <maxIdleTime>60000</maxIdleTime>
-						</connector>
-					</connectors>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+     <finalName>infrared-web</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+ 
+   
 </project>
