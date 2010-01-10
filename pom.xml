@@ -13,7 +13,7 @@
         <module>aspects</module>
         <module>collector</module>
         <module>web-gui</module>
-        <module>test</module>
+<!--    <module>test</module> -->
         <!--<module>tools/maven-infrared-plugin</module>-->
     </modules>
 
@@ -239,6 +239,9 @@
                 <configuration>
                     <source>1.5</source>
                     <target>1.5</target>
+                        <excludes>
+                      <!--  <exclude>**/*Test*</exclude> -->  
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -248,7 +251,7 @@
                       stablized-->
                     <skip>true</skip>
                     <excludes>
-                        <exclude>**/TestAll.java</exclude>
+                       <!-- <exclude>**/Test*</exclude>  --> 
                     </excludes>
                 </configuration>
             </plugin>
