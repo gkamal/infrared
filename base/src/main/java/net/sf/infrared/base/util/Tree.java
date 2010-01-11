@@ -32,6 +32,7 @@ import org.apache.log4j.Logger;
  * @author kamal.govindraj
  */
 public class Tree implements Serializable {
+    static final long serialVersionUID = 1461516383661918275L;
     private static final Logger log = LoggingFactory.getLogger(Tree.class);
     
     private TreeNode root = null;
