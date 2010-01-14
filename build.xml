@@ -1,0 +1,6 @@
+<project name="infrared-packaging">
+	<loadproperties srcFile="build.properties"/>
+	<zip destfile="target/infrared-${ver}.jar">
+	    <zipgroupfileset dir="target/infrared-${ver}-bin.dir" includes="infrared*.jar"/>
+	</zip>
+</project>	
