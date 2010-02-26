@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>jsptree</groupId>
+  <artifactId>jsptree</artifactId>
+  <version>1.0-b6</version>
+  <versioning>
+    <versions>
+      <version>1.0-b6</version>
+      <version>1.0-b5</version>
+      <version>1.0</version>
+    </versions>
+    <lastUpdated>20100226062732</lastUpdated>
+  </versioning>
+</metadata>

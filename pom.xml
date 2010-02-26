@@ -19,6 +19,12 @@
             </snapshots>         
         </pluginRepository>     
       </pluginRepositories> 
+      <repositories>
+	<repository>
+           <id>missing-dependecies</id>
+           <url>file:./repository</url>
+        </repository>
+      </repositories>
       
       
     <modules>
